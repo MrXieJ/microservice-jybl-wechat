@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>错误跳转类，@author Xiejie</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <p th:text="'网址链接:' + ${URL}" />
+    <p th:text="'错误内容:' + ${error}" />
+    <p th:text="'信息:' + ${message}" />
+    <p th:text="'异常:' + ${exception}" />
+    <p th:text="'路径:' + ${path}" />
+    <p th:text="'状态:' + ${status}" />
+    <p th:text="'时间戳:' + ${timestamp}" />
+    <h1>如果是eureka跳转过来的，此服务只给微信后台官方调用，无法个人调用</h1>
+</body>
+</html>
