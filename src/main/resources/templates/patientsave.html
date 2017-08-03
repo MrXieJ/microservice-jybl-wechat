@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+  <html xmlns:th="http://www.thymeleaf.org">
+  <head>
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>佳医比邻</title>
+<style>
+    p {
+    display: block;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+    body {
+      margin: 0;
+    }
+    header {
+        background-color: #35A1F0;
+        color: white;
+        height: 55px;
+        margin: none;
+    
+    }
+    header p {
+      text-align: center;
+      font-weight: bold;
+      line-height: 55px;
+      font-size: 20px;
+    }
+    header img {
+      position: absolute;
+      left:5px;
+      top:12px;
+      vertical-align:top;
+      width: 35px;
+      height: auto;
+    }
+    #headimg {
+
+    text-align: center;
+    }
+    #headimg img{
+      width: 120px;
+      margin: 10px;
+        border-radius: 50%;
+      }
+      #hint{
+        background-color: #DEDEDE;
+        height: 45px;
+        border: solid 1px #BBBBBB;
+
+      }
+      #hint p{
+  line-height: 45px;
+  margin-left: 7px;
+      }
+      .info {
+        border-bottom: solid 1px #BBBBBB;
+        height: 55px;
+      }
+      .info p{
+        line-height: 55px;
+        margin-left: 7px;
+        float: left;
+        position: absolute;
+      }
+      .info input {
+        height: 55px;
+        position: absolute;
+        right: 0px;
+        text-align: right;
+        padding: 0;
+        padding-right: 10px;
+        outline: none;
+        margin-left: 78px;
+        border: 0;
+          font-size: 16px;
+
+      }
+
+      select[name="sex"] {
+        -webkit-appearance:none;
+        appearance:none;
+        width:100%;
+        height:55px;
+        background:none;
+        outline: none;
+        direction: rtl;
+        padding-right: 10px;
+        font-size: 16px;
+        border: none;
+      }
+      #add_container {
+        width:auto;
+        margin-left: 78px;
+        position: absolute;
+        right: 0px;
+      }
+      .address {
+
+        max-width:33%;
+        height:55px;
+        border: none;
+        background:none;
+        outline: none;
+        float: right;
+      }
+     button {
+       margin-top: 30px;
+       height: 55px;
+       background-color: #77B32B;
+       width:100%;
+       color: white;
+       font-size: 20px;
+
+     }
+     form {
+       text-align: center;
+     }
+
+
+</style>
+<script type="text/javascript" th:src="@{/templates/script/jquery-1.7.2.min.js}"></script>
+<script type="text/javascript" th:src="@{/templates/script/address.js}"></script>
+      <script type="text/javascript" th:src="@{/templates/script/select.js}"></script>
+<script th:inline="javascript">
+    var area = [[${address}]].substring(12);
+</script>
+</head>
+
+  <body>
+  <header>
+  <img src="/templates/image/back.jpg" ></img>
+  <p>个人信息</p>
+  </header>
+  <div id="headimg">
+    <img id="head" src="/templates/image/head.jpg"></img>
+  </div>
+  <div id="hint"><p>我的个人信息</p></div>
+<form method="post" action="http://mrxiej.ngrok.wendal.cn/patient/save" name="userinfo" onsubmit="bfunction()">
+    <div class="info">
+        <p>姓名</p>
+        <input type="text" name="name" id="name" placeholder="请填写"/>
+    </div>
+    <div class="info">
+        <p>身份证号</p>
+        <input type="text" name="id_card" id="id_card" placeholder="请填写"/>
+    </div>
+    <div class="info">
+        <p>性别</p>
+        <select name="sex" id="sex">
+          <option label="请选择">请选择</option>
+          <option value="男" label="男">男</option>
+          <option value="女" label="女">女</option>
+        </select>
+    </div>
+    <div class="info">
+        <p>年龄</p>
+        <input type="text" name="age" id="age" placeholder="请填写" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/>
+    </div>
+    <div class="info">
+        <p>联系电话</p>
+        <input type="text" id="phone" name="phone" placeholder="请填写" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/>
+    </div>
+    <div class="info">
+      <p id="add">联系地址</p>
+      <div id="add_container" >
+        <select id="id_areaSelect" class="address" name="areaSelect"><option value="">请选择区域</option></select>
+        <select id="id_citySelect" class="address" name="citySelect" onChange="loadArea(this.value);"><option value="">请选择城市</option></select>
+        <select id="id_provSelect" class="address" name="provSelect" onChange="loadCity(this.value);"><option value="">请选择省份</option></select>
+        <script language="javaScript">loadProvince(area);</script>
+        </div>
+      </div>
+    <div class="info">
+      <p>详细地址</p>
+      <input type="text" name="detailed_address" id="detailed_address" placeholder="请填写"/>
+    </div>
+    <input type="text" id="openid" name="openid" value="" style="visibility: hidden"/>
+    <input type="text" id="headImgUrl" name="headImgUrl" value="" style="visibility: hidden"/>
+    <button type="submit">保存</button>
+</form>
+
+  </body>
+  <script th:inline="javascript">
+      var z=[[${headImgUrl}]];
+      document.getElementById("head").src=z;
+      document.getElementById("openid").value=[[${openid}]];
+      document.getElementById("headImgUrl").value=[[${headImgUrl}]];
+      if([[${name}]]!=null) {
+          document.getElementById("name").value = [[${name}]].toString();
+          document.getElementById("id_card").value = [[${id_card}]].toString();
+          document.getElementById("sex").value = [[${sex}]].toString();
+          document.getElementById("age").value = [[${age}]];
+          document.getElementById("phone").value = [[${phone}]].toString();
+          document.getElementById("detailed_address").value = [[${detailed_address}]].toString();
+      }
+
+      </script>
+  </html>

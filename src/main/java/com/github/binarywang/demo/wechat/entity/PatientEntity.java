@@ -1,6 +1,6 @@
 package com.github.binarywang.demo.wechat.entity;
 
-import java.io.File;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 /**
  * Created by jie on 2017/7/31.
@@ -25,6 +25,9 @@ public class PatientEntity {
 
     private String head_pic;
 
+ public PatientEntity() {
+ }
+
  public PatientEntity(String name, String id_card, String sex, int age, String phone, String address, String detailed_address, String wechat_id, String head_pic) {
   this.name = name;
   this.id_card = id_card;
@@ -36,6 +39,7 @@ public class PatientEntity {
   this.wechat_id = wechat_id;
   this.head_pic = head_pic;
  }
+
 
  public String getName() {
   return name;

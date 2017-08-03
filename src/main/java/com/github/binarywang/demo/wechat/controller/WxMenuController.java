@@ -24,8 +24,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/wechat/menu")
 public class WxMenuController implements WxMpMenuService {
 
+    private String baseUrl="http://mrxiej.ngrok.wendal.cn";
     @Autowired
     private WxMpService wxService;
+
+
 
     /**
      * <pre>
@@ -43,10 +46,11 @@ public class WxMenuController implements WxMpMenuService {
     public String menuCreate(@RequestBody WxMenu menu) throws WxErrorException {
         return this.wxService.getMenuService().menuCreate(menu);
     }
-
+    /*
+    * 创建自己自定义的菜单
+    * */
     @GetMapping("/create")
     public String menuCreateSample() throws WxErrorException {
-
         WxMenu menu = new WxMenu();
         WxMenuButton button1 = new WxMenuButton();
         button1.setType(WxConsts.BUTTON_SCANCODE_PUSH);
@@ -57,11 +61,11 @@ public class WxMenuController implements WxMpMenuService {
         WxMenuButton button21 = new WxMenuButton();
         button21.setType(WxConsts.BUTTON_VIEW);
         button21.setName("健康服务");
-        button21.setUrl("http://mrxiej.ngrok.wendal.cn/Xinyijia/index.html/");
+        button21.setUrl(baseUrl+"/patient.html/");
         WxMenuButton button22 = new WxMenuButton();
         button22.setType(WxConsts.BUTTON_VIEW);
         button22.setName("个人信息");
-        button22.setUrl("http://mrxiej.ngrok.wendal.cn/Xinyijia/view/person");
+        button22.setUrl(baseUrl+"/view/patient");
         button2.getSubButtons().add(button21);
         button2.getSubButtons().add(button22);
         WxMenuButton button3 = new WxMenuButton();

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+  <html xmlns:th="http://www.thymeleaf.org">
+  <head>
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>佳医比邻</title>
+<style>
+    p {
+    display: block;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+    body {
+      margin: 0;
+    }
+    header {
+        background-color: #35A1F0;
+        color: white;
+        height: 55px;
+        margin: none;
+    
+    }
+    #infomation {
+      text-align: center;
+      font-weight: bold;
+      line-height: 55px;
+      font-size: 20px;
+    }
+    header img {
+      position: absolute;
+      left:5px;
+      top:12px;
+      vertical-align:top;
+      width: 35px;
+      height: auto;
+    }
+    #change  {
+        display: block;
+        positon:absolute;
+        right:10px;
+        top:0px;
+        border:none;
+        line-height: 55px;
+
+    }
+    #headimg {
+
+    text-align: center;
+    }
+    #headimg img{
+      width: 120px;
+      margin: 10px;
+        border-radius: 50%;
+      }
+      #hint{
+        background-color: #DEDEDE;
+        height: 45px;
+        border: solid 1px #BBBBBB;
+
+      }
+      #hint p{
+  line-height: 45px;
+  margin-left: 7px;
+      }
+      .info {
+        border-bottom: solid 1px #BBBBBB;
+        height: 55px;
+      }
+      .info p{
+        line-height: 55px;
+        margin-left: 7px;
+        float: left;
+        position: absolute;
+      }
+      .input {
+        height: 55px;
+        position: absolute;
+        right: 0px;
+        text-align: right;
+        padding: 0;
+        padding-right: 10px;
+        outline: none;
+        margin-left: 78px;
+        border: 0;
+          font-size: 16px;
+
+      }
+
+      select[name="sex"] {
+        -webkit-appearance:none;
+        appearance:none;
+        width:100%;
+        height:55px;
+        background:none;
+        outline: none;
+        direction: rtl;
+        padding-right: 10px;
+        font-size: 16px;
+        border: none;
+      }
+      #add_container {
+        width:auto;
+        margin-left: 78px;
+        position: absolute;
+        right: 0px;
+      }
+      .address {
+
+        max-width:33%;
+        height:55px;
+        border: none;
+        background:none;
+        outline: none;
+        float: right;
+      }
+     button {
+       margin-top: 30px;
+       height: 55px;
+       background-color: #77B32B;
+       width:100%;
+       color: white;
+       font-size: 20px;
+         outline:none;
+
+     }
+     form {
+       text-align: center;
+     }
+
+
+</style>
+<script type="text/javascript" th:src="@{/templates/script/jquery-1.7.2.min.js}"></script>
+<script type="text/javascript" th:src="@{/templates/script/address.js}"></script>
+      <script type="text/javascript" th:src="@{/templates/script/select.js}"></script>
+
+</head>
+
+  <body>
+  <header>
+  <img src="/templates/image/back.jpg" ></img>
+  <p id="infomation">个人信息</p>
+  </header>
+  <div id="headimg">
+    <img id="head" src="/templates/image/head.jpg"></img>
+  </div>
+  <div id="hint"><p>我的个人信息</p></div>
+    <div class="info">
+        <p >姓名</p>
+        <p class="input" id="name"></p>
+    </div>
+    <div class="info">
+        <p>身份证号</p>
+        <p class="input" id="id_card"></p>
+    </div>
+    <div class="info">
+        <p>性别</p>
+        <p class="input" id="sex"></p>
+    </div>
+    <div class="info">
+        <p>年龄</p>
+        <p class="input" id="age"></p>
+    </div>
+    <div class="info">
+        <p>联系电话</p>
+        <p class="input" id="phone"></p>
+    </div>
+    <div class="info">
+      <p id="add">联系地址</p>
+        <p class="input" id="address"></p>
+    </div>
+    <div class="info">
+      <p>详细地址</p>
+        <p class="input" id="detailed_address"></p>
+    </div>
+    <button onclick="submit()">修改</button>
+  </body>
+  <script th:inline="javascript">
+          document.getElementById("head").src = [[${headImgUrl}]];
+          document.getElementById("name").innerHTML= [[${name}]].toString();
+          document.getElementById("id_card").innerHTML= [[${id_card}]].toString();
+          document.getElementById("sex").innerHTML= [[${sex}]].toString();
+          document.getElementById("age").innerHTML= [[${age}]];
+          document.getElementById("phone").innerHTML= [[${phone}]].toString();
+          document.getElementById("detailed_address").innerHTML= [[${detailed_address}]].toString();
+          var prov = [[${address}]].substring(0, 6);
+          var city = [[${address}]].substring(6, 12);
+          var area = [[${address}]].substring(12);
+          var array0 = {};
+          var array1 = {};
+          var array2 = {};
+          var obj0 = address['0'];
+          var obj1 = address['1'];
+          var obj2 = address['2'];
+              for (var x in obj0 ) {
+                  var key = obj0[x][0];
+                  var value = obj0[x][1];
+                  array0[key] = value;
+              }
+          for (var x in obj1 ) {
+              var key = obj1[x][0];
+              var value = obj1[x][1];
+              array1[key] = value;
+          }
+          for (var x in obj2 ) {
+              var key = obj2[x][0];
+              var value = obj2[x][1];
+              array2[key] = value;
+          }
+          document.getElementById("address").innerHTML= array0[prov]+array1[city]+array2[area];
+     function submit() {
+    window.location.href="http://mrxiej.ngrok.wendal.cn/view/infotosave?openid="+[[${openid}]];}
+/*    "&amp;headImgUrl="+[[${headImgUrl}]]+
+    "&amp;name="+[[${name}]]+
+    "&amp;id_card="+[[${id_card}]]+
+    "&amp;sex="+[[${sex}]]+
+    "&amp;age="+[[${age}]]+
+    "&amp;phone="+[[${phone}]]+
+    "&amp;address="+[[${address}]]+
+    "&amp;detailed_address="+[[${detailed_address}]]*/
+
+  </script>
+  </html>
