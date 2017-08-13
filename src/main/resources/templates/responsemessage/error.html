@@ -1,10 +1,26 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>返回信息</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>
+    <title>佳医比邻</title>
+    <link rel="stylesheet" href="/templates/css/weui.css"/>
 </head>
 <body>
-<p th:text="'信息:' + ${message}" />
+<div class="page">
+    <div class="weui_msg">
+        <div class="weui_icon_area"><i class="weui_icon_warn weui_icon_msg"></i></div>
+        <div class="weui_text_area">
+            <h2 class="weui_msg_title">操作失败</h2>
+            <p class="weui_msg_desc">很抱歉，由于系统内部原因，该服务暂时无法提供</p>
+        </div>
+        <div class="weui_opr_area">
+            <p class="weui_btn_area">
+                <a href="javascript:JavaScript:WeixinJSBridge.call('closeWindow');" class="weui_btn weui_btn_primary">回到公众号</a>
+            </p>
+        </div>
+
+    </div>
+</div>
 </body>
 </html>

@@ -29,7 +29,6 @@ public class SubscribeHandler extends AbstractHandler {
                 .userInfo(wxMessage.getFromUser(), null);
 
         if (userWxInfo != null) {
-            // TODO 可以添加关注用户到本地
         }
 
         WxMpXmlOutMessage responseResult = null;

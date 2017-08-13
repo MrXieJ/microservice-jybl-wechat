@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <title>佳医比邻</title>
+    <link rel="stylesheet" type="text/css" href="/templates/css/api.css" />
+    <style>
+        html body{width: 100%;height: 100%;}
+        .flexrow{display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient:horizontal; -webkit-flex-flow: row; flex-flow: row; }
+        .flexcolumn{display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient:vertical; -webkit-flex-flow: column; flex-flow: column;}
+        #wrap{background-color:#F2F2F2;height: 100%;}
+        #headbar{ background-color: #35A1F0; width:100%; height: 55px; align-items: center; justify-content:center; }
+        #title{ color: white; font-size: 20px; font-weight: bold; }
+        #bigcontainer{background-color: #F2F2F2;}
+        .container{height: 100px;width:100%;background-color: white;margin-bottom: 10px;}
+        .doctorimg{height: 60px;width: 60px;margin: 10px;}
+        .wrapper{justify-content: center;height: 100px;white-space: nowrap;-webkit-box-flex: 1; -webkit-flex: 1; flex: 1;overflow: hidden;}
+        .rowjustify{align-items: center;justify-content: flex-start;space; }
+        .firstrow{margin-bottom: 10px;overflow:hidden;text-overflow: ellipsis;padding-right: 10px;}
+        .name{font-size: 23px;margin-right: 10px;}
+        .dep{color: #17ABFF;margin-right: 10px;font-weight: bold;}
+        .doctortitle{color: #17ABFF;font-weight: bold;overflow:hidden;text-overflow: ellipsis;}
+        .address{color: #C9C9C9;overflow:hidden;text-overflow: ellipsis;padding-right: 5px;}
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="headbar" class="flexrow">
+        <p id="title">医生列表</p>
+    </div>
+
+    <div id="bigcontainer">
+    </div>
+</div>
+
+
+</body>
+<script th:inline="javascript">
+    var obj = [[${doctorlist}]];
+for(var x in obj){
+    var name = obj[x].name;
+    var dep = obj[x].department;
+    var title = obj[x].title;
+    var address = obj[x].hospital;
+    var html =  '<div class="container flexrow rowjustify">'+
+        '<img class="doctorimg" src="/templates/image/doctorimg.jpg"/>'+
+        '<div class="wrapper flexcolumn">'+
+        '<div class="firstrow flexrow rowjustify">'+
+        '<div class="name">'+name+'</div>'+
+        '<div class="dep">'+dep+'</div>'+
+        '<div class="doctortitle">'+title+'</div>'+
+        '</div>'+
+        '<div class="address">'+address+'</div>'+
+        '</div>'+
+        '</div>'
+    document.getElementById("bigcontainer").insertAdjacentHTML('beforeEnd', html)
+}
+
+</script>
+</html>
