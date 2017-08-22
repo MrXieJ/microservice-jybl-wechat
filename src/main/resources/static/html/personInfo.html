@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>佳医比邻</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/api.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../css/flex.css" /> -->
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <style>
+
+    </style>
+</head>
+
+<body ontouchstart>
+    <div class="page">
+        <header>
+            <div class="header flex-r flex-align-center flex-justify-center">
+                <div class="return-op">
+                    <img src="../image/return1.png" alt="" />
+                </div>
+                <p class="title">个人信息</p>
+                <!-- <a class="btn-op" id="modify" href="javascript:void(0);">修改</a> -->
+            </div>
+        </header>
+        <div class="person-portait">
+            <div class="portait-background">
+                <img src="../image/homepage-2x.png">
+            </div>
+            <div class="portait-img flex-r flex-align-center flex-justify-center">
+                <img id="portait" src="../image/touxiang-2x.png">
+            </div>
+        </div>
+        <div class="weui-cells__title">您的个人信息</div>
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">姓名</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input input-right" id="name" type="text" readonly="true"/>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">身份证</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input input-right" id="identify" type="number" readonly="true"/>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">性别</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input input-right" id="sex" type="text" readonly="true" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">年龄</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input input-right" id="age" type="number" readonly="true"/>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">联系电话</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input input-right" id="telephone" type="number" readonly="true" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">地址</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input input-right" id="address" type="text" readonly="true"/>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">详细地址</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input input-right" id="detail" type="text" readonly="true"/>
+                </div>
+            </div>
+            <div class="weui-btn-area">
+                <a class="weui-btn btn-submit" href="javascript:" id="modify">修改</a>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<!-- <script type="text/javascript" src="../js/plugins/weui/weui.min.js"></script> -->
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script type="text/javascript" src="../js/pages/personInfo.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
+
+</html>

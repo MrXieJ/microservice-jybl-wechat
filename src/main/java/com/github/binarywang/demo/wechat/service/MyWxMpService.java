@@ -83,6 +83,16 @@ public class MyWxMpService extends WxMpServiceImpl {
         return wxMpUser;
     }
 
+    public synchronized WxMpUser getWxMpUserbycode(String code) throws WxErrorException {
+
+        WxMpUser wxMpUser = null;
+        WxMpOAuth2AccessToken wxMpOAuth2AccessToken = null;
+        wxMpOAuth2AccessToken = oauth2getAccessToken(code);
+        wxMpUser = oauth2getUserInfo(wxMpOAuth2AccessToken, null);
+
+        return wxMpUser;
+    }
+
     public WxJsapiSignature getJsapi(HttpServletRequest request) {
         String currentUrl = request.getRequestURL().toString() + "?" + request.getQueryString();
         log.info("current url is :" + currentUrl);

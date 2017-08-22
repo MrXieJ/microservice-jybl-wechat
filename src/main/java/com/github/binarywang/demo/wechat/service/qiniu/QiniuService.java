@@ -1,15 +1,15 @@
 package com.github.binarywang.demo.wechat.service.qiniu;
 
-import com.github.binarywang.demo.wechat.service.WxUrlService;
 import com.google.gson.Gson;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;
+import com.qiniu.storage.BucketManager;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.DefaultPutRet;
+import com.qiniu.storage.model.FileInfo;
 import com.qiniu.util.Auth;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -20,8 +20,7 @@ import java.io.File;
  */
 @Service
 public class QiniuService {
-    @Autowired
-    private WxUrlService wxUrlService;
+
     /*
     * 上传本地文件到七牛云,可覆盖
     * */
@@ -40,7 +39,7 @@ public class QiniuService {
         String key = filename;
 
         Auth auth = Auth.create(accessKey, secretKey);
-        String upToken = auth.uploadToken(bucket);
+        String upToken = auth.uploadToken(bucket,key);
 
         try {
             Response response = uploadManager.put(localFilePath, key, upToken);
@@ -61,9 +60,28 @@ public class QiniuService {
         }
     }
     /*
-    * 获取二维码的七牛云链接
+    * 根据文件名判断七牛服务器上是否存在相应的文件
     * */
-    public String getdoctorqrcodeurl(String filename){
-        return wxUrlService.getQrcodeurl()+"/"+filename;
+    public boolean existfile(String filename){
+        Configuration cfg = new Configuration(Zone.zone2());
+        //...生成上传凭证，然后准备上传
+        String accessKey = "AZSmkZL5bF1zNLWR0ixsxOG5BY1j_RhZe49dcnK5";
+        String secretKey = "qMvDnUXKnMej9TkoYssL2ijbnFzCkcuNQQm5B6Sf";
+        String bucket = "image";
+        String key = filename;
+        Auth auth = Auth.create(accessKey, secretKey);
+        BucketManager bucketManager = new BucketManager(auth, cfg);
+        try {
+            FileInfo fileInfo = bucketManager.stat(bucket, key);
+            if(fileInfo!=null){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (QiniuException ex) {
+           return false;
+        }
     }
+
 }

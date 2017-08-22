@@ -26,18 +26,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.locales>zh_CN</project.build.locales>
 	</properties>
-
 	<dependencies>
-		<!--springboot基本web依赖和thymeleaf依赖-->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>com.fasterxml.jackson.core</groupId>
-					<artifactId>jackson-databind</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<!--配置热部署-->
 		<dependency>
@@ -50,12 +43,18 @@
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 		<!--配置前端渲染模板-->
-		<dependency>
+<!--		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>-->
+		<!--接入fastjson-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.31</version>
 		</dependency>
-		<!--接入Springboot服务认证Eureka-->
 
+		<!--接入Springboot服务认证Eureka-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka</artifactId>
@@ -67,7 +66,6 @@
 			<artifactId>weixin-java-mp</artifactId>
 			<version>${weixin-java-mp.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.github.binarywang</groupId>
 			<artifactId>weixin-java-pay</artifactId>
@@ -80,6 +78,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 		<!--Feign相关包-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -89,6 +88,7 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-feign</artifactId>
 		</dependency>
+
 		<!--redis相关依赖-->
 		<dependency>
 			<groupId>redis.clients</groupId>
@@ -107,12 +107,14 @@
 			<artifactId>javase</artifactId>
 			<version>3.1.0</version>
 		</dependency>
+
 		<!--引入七牛云做图片服务器-->
 		<dependency>
 			<groupId>com.qiniu</groupId>
 			<artifactId>qiniu-java-sdk</artifactId>
 			<version>[7.2.0, 7.2.99]</version>
 		</dependency>
+
 		<!--引入单元测试相关依赖-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -123,6 +125,7 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
+
 
 	</dependencies>
 

@@ -1,0 +1,338 @@
+/*头部姓名*/
+body{
+	margin: 0;
+}
+p{
+	margin: 0px;
+}
+.top_name{
+	text-align: center;
+	color: #FFFFFF;
+	height:44px;
+	line-height: 44px;
+	background-color: #20A5AC;
+ 
+}
+.top_img{
+	margin-left: 10px;
+}
+.top_img img{
+	width: 11px;
+	height: 20px;
+	padding-top: 12px;
+}
+.top_right{
+	width: 21px;
+}
+.top_name p{
+	margin: 0px;
+}
+.top_content {
+	color: #FFFFFF;
+	width: 100%;
+	height: 190px;
+	background-image: url(../image/beijing@2x.png);
+	background-size: 100% 190px;
+}
+
+/*分享*/
+.share {
+	margin-right: 5px;
+}
+.share img{
+	width: 15px;
+	height: 18px;
+	margin-right: 5px;
+}
+.share div{
+	height: 20px;
+}
+
+
+/*个人信息*/
+
+.div_img{
+	background-image: url(../image/oval-16@2x.png);
+	border-radius: 50%;
+	width: 76px;
+	height: 76px;
+	text-align: center;
+	background-size: 76px 76px;
+}
+
+
+.div_img img{
+	border-radius: 50%;
+	width: 66px;
+	height: 66px;
+}
+.first{
+	margin-top: 5px;
+}
+.name {
+	font-size: 15px;
+	margin: 0px;
+	margin-right: 5px;
+}
+.department {
+
+	font-size: 13px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	vertical-align: baseline;
+
+}
+.info{
+	text-align:center;
+}
+.address {
+	width: 100%;
+	font-size: 13px;
+	margin-top: 5px;
+	padding: 0px;
+}
+
+
+/*简介*/
+.kongge{
+	height: 15px;
+	background-color: #F2F2F2;
+}
+.mid_intro {
+	background-color: #F2F2F2;
+	padding-bottom: 10px;
+}
+
+.div_intro {
+	padding: 1px;
+	font-size: 1.2em;
+	font-weight: 700;
+	background-color: #FFFFFF;
+
+}
+
+.div_intro p {
+	margin: 10px;
+	margin-left: 20px;
+	color: #20A5AC;
+	font-size: 15px;
+}
+
+.intro {
+	background-color: #FFFFFF;
+}
+.intro p {
+	margin: 0px;
+	margin-top: 5px;
+	font-size: 11px;
+	color: #4E4D4D;
+}
+.intro b{
+	font-size: 13px;
+	color: #333333;
+	margin-left: 5px;
+}
+.intro img{
+	width: 14px;
+	height: 16px;
+}
+
+.intro_content{
+	padding: 10px;
+	padding-left: 20px;
+	border-top: solid 1px #F2F2F2;
+	
+}
+
+
+/*服务包*/
+#div_service{
+	display: none;
+}
+.div_service {
+	padding: 10px;
+	padding-left: 20px;
+	font-weight: 700;
+	border-bottom: solid 1px #E6E6E6;
+}
+.product{
+	display: inline-block;
+	overflow: hidden; 
+	text-overflow: ellipsis; 
+	white-space: nowrap;
+}
+.service_content{
+	width: 80%;
+	overflow: hidden; /*超出的文本隐藏*/
+	text-overflow: ellipsis; /*溢出用省略号显示*/
+	white-space: nowrap; /*溢出不换行*/
+}
+.serviceinfo{
+	display: none;
+}
+.infoone{
+	color: #8F8F8F;
+	font-size: 10px;
+	padding: 5px;
+	padding-left: 30px;
+}
+.count{
+	margin-right: 10px;
+}
+.infotwo{
+	color: #20A5AC;
+	font-size: 11px;
+	padding: 5px;
+	padding-left: 30px;
+}
+.div_service  > p{
+	text-align: center;
+	margin: 0px;
+	width: 10%;
+	color: #C20F0F;
+	font-size: 13px;
+}
+.down{
+	text-align: center;
+	width: 10%;
+}
+.div_service img{
+	width: 15px;
+	height: 10px;
+}
+.div_service input{
+	display: none;
+}
+
+label{
+	display: inline-block;
+	background-image: url(../image/chuck1@2x.png);
+	background-size: 20px 20px;
+	background-repeat: no-repeat;
+	padding-left: 30px;
+	font-size: 13px;
+	color: #4E4D4D;
+	height: 20px;
+}
+input:checked + label {
+	background-image: url(../image/chuck@2x.png);
+	background-size: 19px 19px;
+	background-repeat: no-repeat;
+	padding-left: 30px;
+	font-size: 13px;
+	color: #4E4D4D;
+}
+.dibu{
+	height: 32px;
+}
+/*购买按钮*/
+.input_button {
+	width: 100%;
+	height: 32px;
+	font-size: 18px;
+	background-color: #30B5FF;
+	color: #FFFFFF;
+	position: fixed;
+	bottom:0;
+	left: 0;
+	cursor: none;
+	-webkit-appearance: none;
+	-webkit-user-select: none;
+}
+/*二维码*/
+.qrcode{
+	text-align: center;
+	margin-top: 30px;
+}
+.div_qrcode img{
+	width: 160px;
+	height: 160px;
+}
+.remind{
+	margin-top: 10px;
+	font-size: 15px;
+	color: #20A5AC;
+}
+
+
+/*shopping.html*/
+.warn{
+	padding-top: 25px;
+	padding-bottom: 25px;
+	padding-left: 60px;
+	padding-right: 60px;
+	background-color: #F2F2F2;
+	height: 80px;
+}
+.warn_img img{
+	width: 50px;
+	height: 50px;
+	margin: 10px;
+}
+.warn_div{
+	font-size: 13px;
+	color: #333333;
+}
+.warn_div p{
+	color: #20A5AC;
+	display: inline-block;
+}
+#serpro{
+	display: none;
+}
+.protocol{
+	padding: 10px;
+	padding-left: 20px;
+	position: fixed;
+	bottom:40px;
+	left: 0;
+}
+.protocol label{
+	font-size: 13px;
+	color: #8F8F8F;
+	background-image: url(../image/gou-no@2x.png);
+	background-size: 14px 14px;
+	padding-left: 18px;
+	height: 20px;
+}
+.protocol input:checked + label{
+    background-image: url(../image/gou@2x.png);
+    background-size: 14px 14px;
+    padding-left: 18px;
+	height: 20px;
+}
+.protocol a{
+	color: #20A5AC;
+}
+.affirm{
+	width: 100%;
+	height: 40px;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	text-align: center;
+    color: #FFFFFF;
+}
+.money{
+	width: 50%;
+	background-color: #A4A7A7;
+	padding: 10px;
+}
+#p1{
+	text-align: center;
+
+}
+#p2{
+	text-align: center;
+	color: #C21E20;
+}
+#cancel{
+	width: 25%;
+	background-color: #707F8D;
+	padding: 10px;
+}
+#confirm{
+	width: 25%;
+	background-color: #20AD3F;
+	padding: 10px;
+}

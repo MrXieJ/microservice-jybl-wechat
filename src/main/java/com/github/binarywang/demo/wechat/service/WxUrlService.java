@@ -9,15 +9,15 @@ public class WxUrlService {
     /*
     * 定义基本的url
     * */
-    String baseurl="http://mrxiej.ngrok.wendal.cn";
+    String baseurl="http://mrxiej.ngrok.wendal.cn/api-wechat";
     /*
     * imagebaseurl,七牛云链接
     * */
     String imagebaseurl="http://oubcp9t4y.bkt.clouddn.com";
     /*
-    * 二维码访问链接
+    * 医生二维码访问后台的链接
     * */
-    String qrcodeurl=imagebaseurl+"/qrcode/doctor";
+    String doctorqrcodeurl=baseurl+"/qrcode/doctor";
 
     public String getImagebaseurl() {
         return imagebaseurl;
@@ -31,8 +31,8 @@ public class WxUrlService {
         return baseurl;
     }
 
-    public  String getQrcodeurl() {
-        return qrcodeurl;
+    public  String getDoctorQrcodeurl() {
+        return doctorqrcodeurl;
     }
 
 }

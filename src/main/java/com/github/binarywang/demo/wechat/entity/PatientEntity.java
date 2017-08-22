@@ -1,11 +1,12 @@
 package com.github.binarywang.demo.wechat.entity;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import java.io.Serializable;
 
 /**
  * Created by jie on 2017/7/31.
  */
-public class PatientEntity {
+public class PatientEntity implements Serializable{
 
     private String name;
 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>佳医比邻</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/api.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../css/flex.css" /> -->
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <style>
+
+    </style>
+</head>
+
+<body ontouchstart>
+    <div class="page">
+        <div class="weui-msg">
+            <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+            <div class="weui-msg__text-area">
+                <h2 class="weui-msg__title">操作成功</h2>
+            </div>
+            <div class="weui-msg__opr-area">
+                <p class="weui-btn-area">
+                    <a href="javascript:WeixinJSBridge.call('closeWindow');" class="weui-btn weui-btn_primary">返回公众号</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
+
+</html>

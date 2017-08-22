@@ -1,5 +1,6 @@
 package com.github.binarywang.demo.wechat.controller.wechat;
 
+import com.github.binarywang.demo.wechat.service.MyWxMpService;
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.common.bean.menu.WxMenu;
 import me.chanjar.weixin.common.bean.menu.WxMenuButton;
@@ -24,9 +25,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/wechat/menu")
 public class WxMenuController implements WxMpMenuService {
 
-    private String baseUrl="http://mrxiej.ngrok.wendal.cn";
+    private String baseUrl="http://mrxiej.ngrok.wendal.cn/api-wechat";
+
     @Autowired
     private WxMpService wxService;
+    /*
+    * 获取一些必要的微信参数类
+    * */
+    @Autowired
+    private MyWxMpService myWxMpService;
 
 
 
@@ -61,11 +68,11 @@ public class WxMenuController implements WxMpMenuService {
         WxMenuButton button21 = new WxMenuButton();
         button21.setType(WxConsts.BUTTON_VIEW);
         button21.setName("健康服务");
-        button21.setUrl(baseUrl+"/view/health");
+        button21.setUrl(myWxMpService.oauth2buildAuthorizationUrl(baseUrl + "/view/healthmanage", WxConsts.OAUTH2_SCOPE_USER_INFO, "health"));
         WxMenuButton button22 = new WxMenuButton();
         button22.setType(WxConsts.BUTTON_VIEW);
         button22.setName("个人信息");
-        button22.setUrl(baseUrl+"/view/patient");
+        button22.setUrl(myWxMpService.oauth2buildAuthorizationUrl(baseUrl + "/view/patient", WxConsts.OAUTH2_SCOPE_USER_INFO, "patient"));
         button2.getSubButtons().add(button21);
         button2.getSubButtons().add(button22);
         WxMenuButton button3 = new WxMenuButton();
@@ -73,7 +80,7 @@ public class WxMenuController implements WxMpMenuService {
         WxMenuButton button31 = new WxMenuButton();
         button31.setType(WxConsts.BUTTON_VIEW);
         button31.setName("医生列表");
-        button31.setUrl(baseUrl+"/view/doctorlist");
+        button31.setUrl(myWxMpService.oauth2buildAuthorizationUrl(baseUrl + "/view/doctorlist", WxConsts.OAUTH2_SCOPE_USER_INFO, "doctorlist"));
         WxMenuButton button32 = new WxMenuButton();
         button32.setType(WxConsts.BUTTON_VIEW);
         button32.setName("关于佳医比邻");
@@ -81,7 +88,7 @@ public class WxMenuController implements WxMpMenuService {
         WxMenuButton button33 = new WxMenuButton();
         button33.setType(WxConsts.BUTTON_VIEW);
         button33.setName("联系我们");
-        button33.setUrl(baseUrl+"/view/contactus");
+        button33.setUrl(myWxMpService.oauth2buildAuthorizationUrl(baseUrl + "/view/contactus", WxConsts.OAUTH2_SCOPE_USER_INFO, "contactus"));
         button3.getSubButtons().add(button31);
         button3.getSubButtons().add(button32);
         button3.getSubButtons().add(button33);
@@ -89,12 +96,7 @@ public class WxMenuController implements WxMpMenuService {
         menu.getButtons().add(button1);
         menu.getButtons().add(button2);
         menu.getButtons().add(button3);
-//        WxMenuButton button2 = new WxMenuButton();
-//        button2.setType(WxConsts.BUTTON_MINIPROGRAM);
-//        button2.setName("小程序");
-//        button2.setAppId("wx286b93c14bbf93aa");
-//        button2.setPagePath("pages/lunar/index.html");
-//        button2.setUrl("http://mp.weixin.qq.com");
+
         return this.wxService.getMenuService().menuCreate(menu);
     }
 

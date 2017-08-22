@@ -1,0 +1,469 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <title>健康服务</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/api.css" /> -->
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+    <style type="text/css">
+        #wrap {
+            background-color: #DBDBDB;
+        }
+
+        #headbar {
+            background-color: #35A1F0;
+            width: 100%;
+            height: 55px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #title {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #back {
+            width: 30px;
+            margin-left: 5px;
+        }
+
+        #headimg {
+            width: 30px;
+            margin-right: 5px;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 150px;
+        }
+
+        .img {
+            width: 100%;
+            height: 150px;
+        }
+
+        .allfunction {
+            background-color: white;
+            margin-top: 10px;
+            height: 200px;
+        }
+
+        .secrow {
+            border-top: solid 1px #BBBBBB;
+            border-bottom: solid 1px #BBBBBB;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .one {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+        }
+
+        .onehalf {
+            -webkit-box-flex: 1.5;
+            -webkit-flex: 1.5;
+            flex: 1.5;
+        }
+
+        .imgrow1 {
+            width: 60px;
+            height: 60px;
+            margin-left: 5px;
+        }
+
+        .imgrow2 {
+            width: 40px;
+            height: 40px;
+        }
+
+        .rowjustify {
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .coljustify {
+            align-items: center;
+            justify-content: center;
+        }
+        /*.title {
+            font-size: 18px;
+        }*/
+
+        .mydoctor {
+            border-right: solid 1px #BBBBBB;
+        }
+
+        .myconsult {
+            background-color: #F1F0F2;
+            height: 40px;
+            padding-left: 20px;
+            border-bottom: solid 1px #BBBBBB;
+        }
+
+        .consultimg {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .alert {
+            background-image: url('../image/notification.png');
+            background-size: contain;
+        }
+
+        .number-red-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: red;
+            float: right;
+            color: white;
+            text-align: center;
+            line-height: 20px;
+            font-size: 16px;
+        }
+
+        .messages-title {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #D9D9D9;
+        }
+
+        .messages-title .messages-title-icon {
+            width: 24px;
+            height: 22px;
+            margin-right: 5px;
+        }
+
+        .messages-title .messages-title-icon img {
+            width: 24px;
+            height: 100%;
+        }
+
+        .messages-title .messages-title-text {
+            font-size: 15px;
+            color: #333333;
+        }
+
+        .message-wrapper {
+            position: relative;
+            height: 90px;
+            overflow: hidden;
+            border-bottom: 1px solid #D9D9D9;
+        }
+
+        .message-block {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 90px;
+            box-sizing: border-box;
+            background-color: white;
+        }
+
+        .doctor-img {
+            height: 90px;
+            width: 90px;
+            background-image: url('../image/touxiang2.png');
+            background-repeat: no-repeat;
+            background-size: 70px 70px;
+            background-position: center;
+        }
+
+        .red-dot {
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            background-color: red;
+            float: right;
+            margin: 10px;
+        }
+
+        .doctor-name {
+            font-size: 23px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding-right: 10px;
+        }
+
+        .message {
+            justify-content: center;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .message-content {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding-right: 10px;
+            color: #a6a6a6;
+        }
+
+        .message-time {
+            position: absolute;
+            right: 10px;
+            color: #ABABAB;
+        }
+
+        .delete {
+            float: right;
+            width: 80px;
+            right: 0;
+            top: 0;
+            line-height: 90px;
+            background-color: #f00;
+            color: white;
+            text-align: center;
+            height: 90px;
+        }
+
+        .delete i.iconfont {
+            font-size: 1em;
+            padding-right: 5px;
+        }
+
+        @keyframes noheight {
+            0% {
+                height: 90px;
+                opacity: 1;
+            }
+            100% {
+                height: 0px;
+                opacity: 0;
+            }
+        }
+
+        .noheight {
+            animation: noheight 0.5s linear 0s forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <div class="header flex-r flex-align-center flex-justify-center">
+                <div class="return-op">
+                    <img src="../image/return1.png" alt="" />
+                </div>
+                <p class="title">健康服务</p>
+                <div class="image-op">
+                    <img src="../image/person.png" />
+                </div>
+            </div>
+        </header>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img class="img" src="../image/raw.jpg"></img>
+                </div>
+                <div class="swiper-slide"><img class="img" src="../image/raw1.jpg"></img>
+                </div>
+                <div class="swiper-slide"><img class="img" src="../image/raw2.jpg"></img>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="allfunction flex-c">
+            <div class="fisrtrow flex-r one">
+                <div class="mydoctor flex-r one rowjustify">
+                    <img class="imgrow1" src="../image/mydoctor.png"></img>
+                    <div class="title">我的医生</div>
+                </div>
+                <div class="myservice flex-r one rowjustify">
+                    <img class="imgrow1" src="../image/myservice.png"></img>
+                    <div class="title">我购买的服务</div>
+                </div>
+            </div>
+            <div class="secrow flex-r one">
+                <div class="henlthdoc one flex-c coljustify">
+                    <img class="imgrow2" src="../image/healthdoc.png"></img>
+                    <div class="title">健康档案</div>
+                </div>
+                <div class="evaluate onehalf flex-c coljustify">
+                    <img class="imgrow2" src="../image/evaluate.png"></img>
+                    <div class="title">心血管风险评估</div>
+                </div>
+                <div class="message one flex-c coljustify">
+                    <div class="imgrow2 alert">
+                        <div class="number-red-dot">5</div>
+                    </div>
+                    <div class="title">消息</div>
+                </div>
+            </div>
+        </div>
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-panel__hd flex-r flex-align-center messages-title">
+                <div class="messages-title-icon">
+                    <img src="../image/message.png" alt="">
+                </div>
+                <p class="messages-title-text">我咨询的医生</p>
+            </div>
+            <div class="weui-panel__bd">
+                <div class="message-container" id="message-container">
+                    <div class="message-wrapper">
+                        <div class="message-block flex-r" ontouchstart="return touchstartF(event,this);" ontouchmove="return touchmoveF(event,this);">
+                            <div class="doctor-img">
+                                <div class="red-dot"></div>
+                            </div>
+                            <div class="message one flex-c">
+                                <div class=" flex-r flex-align-center">
+                                    <div class="doctor-name">Dr.Wu</div>
+                                    <div class="message-time">2017-07-12 18:28:02</div>
+                                </div>
+                                <div class="message-content">你好,最近身体状况如何身体状况如何hehehehe
+                                </div>
+                            </div>
+                        </div>
+                        <div class="delete" onclick="return toDelete(event,this);">
+                            <i class="iconfont"></i> 删除
+                        </div>
+                    </div>
+                    <div class="message-wrapper">
+                        <div class="message-block flex-r" ontouchstart="return touchstartF(event,this);" ontouchmove="return touchmoveF(event,this);">
+                            <div class="doctor-img">
+                                <div class="red-dot"></div>
+                            </div>
+                            <div class="message one flex-c">
+                                <div class=" flex-r flex-align-center">
+                                    <div class="doctor-name">Dr.Wu</div>
+                                    <div class="message-time">2017-07-12 18:28:02</div>
+                                </div>
+                                <div class="message-content">你好,最近身体状况如何身体状况如何hehehehe
+                                </div>
+                            </div>
+                        </div>
+                        <div class="delete" onclick="return toDelete(event,this);">
+                            <i class="iconfont"></i> 删除
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-panel__ft">
+                <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+                    <div class="weui-cell__bd">查看更多</div>
+                    <span class="weui-cell__ft"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- <script type="text/javascript" src="../script/plugins/apicloud/api.js"></script> -->
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<!-- <script type="text/javascript" src="../js/plugins/weui/weui.min.js"></script> -->
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script type="text/javascript" src="../js/plugins/swiper/swiper.min.js"></script>
+<script type="text/javascript">
+    /*<![CDATA[*/
+    var mySwiper = new Swiper('.swiper-container', {
+        direction: 'horizontal',
+        loop: true,
+        autoplay: 3000,
+        autoplayDisableOnInteraction: false,
+        roundLengths: true,
+        pagination: '.swiper-pagination',
+    })
+
+    function touchstartF(event) {
+        x = event.changedTouches[0].pageX;
+        y = event.changedTouches[0].pageY;
+        swipeX = true;
+        swipeY = true;
+    };
+
+    function touchmoveF(event, e) {
+        X = event.changedTouches[0].pageX;
+        Y = event.changedTouches[0].pageY;
+        // 左右滑动
+        if (swipeX && Math.abs(X - x) - Math.abs(Y - y) > 0) {
+            // 阻止事件冒泡
+            event.stopPropagation();
+            if (X - x > 10) {
+                event.preventDefault();
+                e.style.WebkitTransform = "translateX(" + 0 + "px)";
+                e.style.transition = "-webkit-transform 300ms ease-in-out";
+            }
+            if (x - X > 10) {
+                event.preventDefault();
+                e.style.WebkitTransform = "translateX(" + -80 + "px)";
+                e.style.transition = "-webkit-transform 300ms ease-in-out";
+            }
+            swipeY = false;
+        }
+        // 上下滑动
+        if (swipeY && Math.abs(X - x) - Math.abs(Y - y) < 0) {
+            swipeX = false;
+        }
+    };
+
+
+    function toDelete(event, e) {
+        var deleteL = document.querySelectorAll('.delete');
+        var wrapper = document.querySelectorAll('.wrapper');
+        for (var i = 0; i < wrapper.length; i++) {
+            wrapper[i].style.transition = 'height 500ms';
+            wrapper[i].style.webkitTransition = 'height 500ms';
+            wrapper[i].style.overflow = 'hidden';
+        }
+        var deleteLB = e;
+
+        var down = deleteLB.parentNode;
+        if (down.clientHeight == '90') {
+            // deleteLB.parentNode.style.height = '0';
+            deleteLB.parentNode.classList.add('noheight');
+            setTimeout(function() {
+                down.remove();
+            }, 100);
+        }
+
+    }
+
+    function addCart() {
+        var html = '<div class="message-wrapper">' +
+            '<div class="message-block flex-r" ontouchstart="return touchstartF(event,this);" ontouchmove="return touchmoveF(event,this);">' +
+            '<div class="doctor-img">' +
+            '<div class="red-dot">' +
+            '</div>' +
+            '</div>' +
+            '<div class="message one flex-c">' +
+            '<div class="doctor-name">Dr.Wu' +
+            '</div>' +
+            '<div class="message-content">你好,最近身体状况如何身体状况如何hehehehe' +
+            '</div>' +
+            '</div>' +
+            '<div class="message-time">2017-07-12' +
+            '</div>' +
+            '</div>' +
+            '<div class="delete" onclick="return toDelete(event,this);">' +
+            '<i class="iconfont"></i>' +
+            '删除' +
+            '</div>' +
+            '</div>'
+        document.getElementById("message-container").insertAdjacentHTML('beforeEnd', html)
+    }
+    /*]]>*/
+</script>
+<script type="text/javascript">
+    $(function() {
+        $('header').on('click', '.return-op', function() {
+            window.history.back(-1);
+        });
+
+        $('header').on('click', '.image-op', function() {
+            window.location.href = 'personInfo.html';
+        });
+    });
+</script>
+
+</html>

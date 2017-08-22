@@ -1,10 +1,8 @@
 package com.github.binarywang.demo.wechat.controller.doctor;
 
-import com.github.binarywang.demo.wechat.controller.patient.PatientClient;
+
 import com.github.binarywang.demo.wechat.entity.DoctorEntity;
-import com.github.binarywang.demo.wechat.service.MyWxMpService;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.github.binarywang.demo.wechat.entity.ServiceEntity;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +16,7 @@ import java.util.List;
 @FeignClient("eureka-server-mysql")
 public interface DoctorClient {
     /*
-    * 调用远程服务下通过医生id号返回医生实体接口
+    * 调用远程服务下通过医生phone返回医生实体接口
     * */
     @RequestMapping(value="/doctor/findbyphone",method = RequestMethod.GET)
     DoctorEntity findbydoctorphone(@RequestParam("phone") String phone);
@@ -27,4 +25,9 @@ public interface DoctorClient {
     * */
     @RequestMapping(value="/doctor/findall",method = RequestMethod.GET)
     List<DoctorEntity> findalldoctor();
+    /*
+    * 返回所有服务包
+    * */
+    @RequestMapping(value="/doctor/service",method = RequestMethod.GET)
+    List<ServiceEntity> findallservice();
 }
