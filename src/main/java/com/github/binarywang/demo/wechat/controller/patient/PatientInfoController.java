@@ -31,7 +31,7 @@ public class PatientInfoController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     /*
-    * 保存患者信息
+    * 1.1保存患者信息
     * */
     @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
             RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
@@ -66,7 +66,7 @@ public class PatientInfoController {
     return jsonResult;
     }
     /*
-    * 更新患者信息
+    * 1.2更新患者信息
     * */
     @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
             RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
@@ -101,7 +101,7 @@ public class PatientInfoController {
         return jsonResult;
     }
     /*
-    * 根据患者微信号获取患者所有信息
+    * 1.3根据患者微信号获取患者所有信息
     * */
     @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
             RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
@@ -132,7 +132,7 @@ public class PatientInfoController {
         return jsonResult;
     }
     /*
-    * 根据微信号获取我的医生
+    * 1.4根据微信号获取我的医生
     * */
     @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
             RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
@@ -164,7 +164,7 @@ public class PatientInfoController {
         return jsonResult;
     }
     /*
-    * 根据服务主键列表返回服务实体list
+    * 1.5根据服务主键列表返回服务实体list
     * */
     @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
             RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
@@ -187,14 +187,14 @@ public class PatientInfoController {
        }
        catch(Exception e){
            jsonResult.setErrorcode("10013");
-           jsonResult.setMessage("there is an exception while getting servicelist by idlist\n"+e.getMessage());
+           jsonResult.setMessage("there is an exception while getting servicelist by idlist . exception:"+e.getMessage());
            jsonResult.setData(null);
             this.logger.error("根据服务list获取服务发生异常"+e.getMessage());
         }
         return jsonResult;
     }
     /*
-    * 根据患者微信号获取我购买的服务
+    * 1.6根据患者微信号获取我购买的服务
     * */
     @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
             RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
@@ -211,14 +211,14 @@ public class PatientInfoController {
         }
         catch(Exception e){
             jsonResult.setErrorcode("10014");
-            jsonResult.setMessage("there is an exception while getting myservice\n"+e.getMessage());
+            jsonResult.setMessage("there is an exception while getting myservice . exception:"+e.getMessage());
             jsonResult.setData(null);
             this.logger.error("获取我购买的服务失败"+e.getMessage());
         }
         return jsonResult;
     }
     /*
-    * 根据患者openid和服务主键list购买服务
+    * 1.7根据患者openid和服务主键list购买服务
     * */
     @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
             RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,

@@ -6,10 +6,7 @@ import com.github.binarywang.demo.wechat.service.qiniu.QiniuService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by jie on 2017/8/17.
@@ -25,9 +22,12 @@ public class QrcodeGetController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     /*
-    * 根据医生电话号码获取医生二维码的七牛云链接
+    * 2.2根据医生电话号码获取医生二维码的七牛云链接
     * 错误返回码10011,10012
     * */
+    @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
+            RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
+            RequestMethod.HEAD, RequestMethod.PUT, RequestMethod.PATCH}, origins="*")
     @RequestMapping(value="/qrcode/doctorget",method = RequestMethod.GET)
     public JsonResult getdoctorqrcodeurl(@RequestParam("phone") String phone){
         try {

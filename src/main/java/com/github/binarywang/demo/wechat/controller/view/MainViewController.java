@@ -106,7 +106,7 @@ public class MainViewController {
      * 跳转到患者相应的个人信息显示页面和个人信息保存页面
      */
     @RequestMapping(value = "/patient")
-    public String patientinfo(HttpServletRequest request, Model model) {
+    public String patientinfo(HttpServletRequest request) {
         /* 首先构建微信认证url */
         String code = request.getParameter("code");
         this.logger.info("request的值：" + request.toString() + "\n");

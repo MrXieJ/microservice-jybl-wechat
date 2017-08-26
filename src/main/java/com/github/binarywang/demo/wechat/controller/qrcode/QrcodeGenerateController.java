@@ -16,10 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
 
@@ -41,8 +38,11 @@ public class QrcodeGenerateController implements WxMpQrcodeService{
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     /*
-    * 根据医生电话号码生成医生二维码,并上传到七牛云
+    * 2.1根据医生电话号码生成医生二维码,并上传到七牛云
     * */
+    @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
+            RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
+            RequestMethod.HEAD, RequestMethod.PUT, RequestMethod.PATCH}, origins="*")
     @ResponseBody
     @RequestMapping(value="/qrcode/create")
     public JsonResult qrCodeCreateLogo(@RequestParam("phone")String phone) throws WxErrorException, QRParamsException,IOException {

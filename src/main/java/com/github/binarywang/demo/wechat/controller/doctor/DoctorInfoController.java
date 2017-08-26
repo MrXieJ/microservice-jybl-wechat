@@ -24,7 +24,7 @@ public class DoctorInfoController {
     /*打印日志*/
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     /*
-    * 根据医生手机号码获取医生实体类
+    * 1.8根据医生手机号码获取医生实体类
     * */
     @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
             RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
@@ -55,7 +55,7 @@ public class DoctorInfoController {
         return jsonResult;
     }
     /*
-    * 获取医生列表
+    * 1.9获取医生列表
     * */
     @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
             RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
@@ -79,7 +79,7 @@ public class DoctorInfoController {
         return jsonResult;
     }
     /*
-    * 获取平台提供的所有服务包
+    * 2.0获取平台提供的所有服务包
     * */
     @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
             RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
