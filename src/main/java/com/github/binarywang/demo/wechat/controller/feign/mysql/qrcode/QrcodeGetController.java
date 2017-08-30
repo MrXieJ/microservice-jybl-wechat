@@ -1,4 +1,4 @@
-package com.github.binarywang.demo.wechat.controller.qrcode;
+package com.github.binarywang.demo.wechat.controller.feign.mysql.qrcode;
 
 import com.github.binarywang.demo.wechat.entity.JsonResult;
 import com.github.binarywang.demo.wechat.service.WxUrlService;

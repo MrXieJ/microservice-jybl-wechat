@@ -1,4 +1,4 @@
-package com.github.binarywang.demo.wechat.controller.doctor;
+package com.github.binarywang.demo.wechat.controller.feign.mysql.doctor;
 
 
 import com.github.binarywang.demo.wechat.entity.DoctorEntity;

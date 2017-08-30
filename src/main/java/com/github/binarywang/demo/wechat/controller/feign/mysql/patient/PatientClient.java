@@ -1,4 +1,4 @@
-package com.github.binarywang.demo.wechat.controller.patient;
+package com.github.binarywang.demo.wechat.controller.feign.mysql.patient;
 import com.github.binarywang.demo.wechat.entity.PatientEntity;
 import com.github.binarywang.demo.wechat.entity.ServiceEntity;
 import org.springframework.cloud.netflix.feign.FeignClient;
@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.xml.ws.Service;
 import java.util.List;
 
 

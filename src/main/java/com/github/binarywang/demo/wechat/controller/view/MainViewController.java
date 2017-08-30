@@ -1,7 +1,6 @@
 package com.github.binarywang.demo.wechat.controller.view;
 
-import com.github.binarywang.demo.wechat.controller.doctor.DoctorClient;
-import com.github.binarywang.demo.wechat.controller.patient.PatientClient;
+import com.github.binarywang.demo.wechat.controller.feign.mysql.patient.PatientClient;
 import com.github.binarywang.demo.wechat.entity.PatientEntity;
 import com.github.binarywang.demo.wechat.service.MyWxMpService;
 import me.chanjar.weixin.common.api.WxConsts;
@@ -11,7 +10,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 
