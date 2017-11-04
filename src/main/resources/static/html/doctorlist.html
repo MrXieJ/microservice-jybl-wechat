@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html >
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no" />
+		<title>佳医比邻</title>
+		<link rel="stylesheet" type="text/css" href="../css/api.css" />
+		<link rel="stylesheet" href="../css/doctorinfo.css" />
+		<link rel="stylesheet" href="../css/flex.css" />
+		<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+		<style>
+			html body {
+				width: 100%;
+				height: 100%;
+			}
+			.flexrow {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-orient: horizontal;
+				-webkit-flex-flow: row;
+				flex-flow: row;
+			}
+			
+			.flexcolumn {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-flex-flow: column;
+				flex-flow: column;
+			}
+			
+			#wrap {
+				background-color: #F2F2F2;
+				height: 100%;
+			}
+			
+			#headbar {
+				background-color: #20A5AC;
+				width: 100%;
+				height: 55px;
+				align-items: center;
+				justify-content: center;
+			}
+			
+			#title {
+				color: white;
+				font-size: 20px;
+				font-weight: bold;
+			}
+			
+			#bigcontainer {
+				background-color: #F2F2F2;
+			}
+			.container {
+				height: 100px;
+				width: 100%;
+				background-color: white;
+				margin-bottom: 10px;
+			}
+			
+			.doctorimg {
+				height: 57px;
+				width: 57px;
+				margin: 10px;
+				margin-right: 15px;
+				border-radius: 50%;
+			}
+			
+			.wrapper {
+				justify-content: center;
+				height: 100px;
+				white-space: nowrap;
+				-webkit-box-flex: 1;
+				-webkit-flex: 1;
+				flex: 1;
+				overflow: hidden;
+			}
+			
+			.rowjustify {
+				align-items: center;
+				justify-content: flex-start;
+				space;
+			}
+			
+			.firstrow {
+				margin-bottom: 10px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				padding-right: 10px;
+			}
+			
+			.name {
+				font-size: 18px;
+				margin-right: 10px;
+				color: #333333;
+			}
+			
+			.dep {
+				color: #20A5AC;
+				margin-right: 5px;
+				font-weight: bold;
+				font-size: 13px;
+			}
+			
+			.doctortitle {
+				color: #20A5AC;
+				font-weight: bold;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				font-size: 13px;
+			}
+			
+			.address {
+				font-size: 14px;
+				color: #8F8F8F;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				padding-right: 5px;
+				margin-top: 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div class="top">
+				<div class="top_name flex-r flex-justify-between">
+					<div class="top_img">
+						<img src="../image/Shape-10.png" onclick="javascript:WeixinJSBridge.call('closeWindow');" />
+					</div>
+					<div class="top_doctor flex-justify-center">
+						<p>医生列表</p>
+					</div>
+					<div class="top_right">
+					</div>
+				</div>
+			</div>
+			
+			<div id="bigcontainer">
+			</div>
+		</div>
+
+	</body>
+	<script>
+		var URL = "http://mrxiej.ngrok.wendal.cn/api-wechat";
+		$.ajax({
+			type: "GET",
+			url: URL + "/doctor/getlist",
+			dataType: "json",
+			success: function(alldata) {
+				var data=alldata.data;
+				if(data != null) {
+					$.each(data, function(n, obj) {
+						if(obj.head_pic==null){
+							obj.head_pic="../image/touxiang1@2x.png";
+						}
+						if(obj.name==null){
+							obj.name="未填写";
+						}
+						if(obj.department==null){
+							obj.department="未填写";
+						}
+						if(obj.title==null){
+							obj.title="未填写";
+						}
+						if(obj.hospital==null){
+							obj.hospital="未填写";
+						}
+						var html = '<div class="container flexrow rowjustify">' +
+							'<img class="doctorimg" src="' + obj.head_pic + '" onerror="this.src=\'../image/touxiang1@2x.png\'"'+'/>' +
+							'<div class="wrapper flexcolumn">' +
+							'<div class="firstrow flexrow rowjustify">' +
+							'<div class="name">' + obj.name + '</div>' +
+							'<div class="dep">' + obj.department + ' | </div>' +
+							'<div class="doctortitle">' + obj.title + '</div>' +
+							'</div>' +
+							'<div class="address">' + obj.hospital + '</div>' +
+							'</div>' +
+							'</div>'
+						document.getElementById("bigcontainer").insertAdjacentHTML('beforeEnd', html);
+					});
+				}
+			}
+		});
+
+		
+	</script>
+
+</html>

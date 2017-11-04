@@ -1,5 +1,5 @@
 $(function() {
-    var openid = getUrlParam('appid');
+    var wechat_id = getUrlParam('appid');
     var headimg = getUrlParam('headimg');
     $('#portait').attr('src', headimg);
     var isUpdate = false;
@@ -10,36 +10,34 @@ $(function() {
         url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/get',
         type: 'GET',
         data: {
-            wechat_id: openid
+            wechat_id: wechat_id
         },
+        timeout: 30000,
         beforeSend: function() {
             $.showLoading();
         },
         success: function(result, status, xhr) {
-            if (!result || result.errorcode != "0") {
-                isUpdate = false;
+            if (result.errorcode!="0") {
+                if(result.errorcode!="10003") {
+                    window.location.href = 'msg_error.html';
+                }
+                else{
+                }
             } else {
                 isUpdate = true;
-                var data = result.data;
-                $('#name').val(data.name);
-                $('#identify').val(data.id_card);
-                $('#sex').val(data.sex);
-                $('#age').val(data.age);
-                $('#telephone').val(data.phone);
-                $('#address').val(data.address);
-                $('#detail').val(data.detailed_address);
+                presult=result.data;
+                $('#name').val(presult.name);
+                $('#identify').val(presult.id_card);
+                $('#sex').val(presult.sex);
+                $('#age').val(presult.age);
+                $('#telephone').val(presult.phone);
+                $('#address').val(presult.address);
+                $('#detail').val(presult.detailed_address);
             }
-            console.info('success');
         },
         complete: function(status, xhr) {
-            console.info('complete');
             $.hideLoading();
         }
-    });
-
-    // 返回
-    $('header').on('click', '.return-op', function() {
-        window.history.back(-1);
     });
 
     // 阻止键盘弹出
@@ -64,7 +62,7 @@ $(function() {
         title: "选择联系地址",
         showDistrict: true,
         onChange: function(picker, values, displayValues) {
-            // console.log(values, displayValues);
+
         }
     });
 
@@ -80,23 +78,29 @@ $(function() {
                 var $telephone = $('#telephone');
                 var $address = $('#address');
                 var $detail = $('#detail');
+                if($name.val() && $identify.val() && $sex.val() && $age.val() && $telephone.val() &&
+                    $address.val() && $detail.val()) {
+                    var person = {
+                        wechat_id: wechat_id,
+                        name: $name.val(),
+                        id_card: $identify.val(),
+                        sex: $sex.val(),
+                        age: $age.val(),
+                        phone: $telephone.val(),
+                        address: $address.val(),
+                        detailed_address: $detail.val(),
+                        headpic: headimg
+                    };
 
-                var person = {
-                  wechat_id: openid,
-                  name: $name.val(),
-                  id_card: $identify.val(),
-                  sex: $sex.val(),
-                  age: $age.val(),
-                  phone: $telephone.val(),
-                  address: $address.val(),
-                  detailed_address: $detail.val(),
-                  headpic: headimg
-                };
-
-                if(isUpdate){
-                  savePerson(updateUrl, person, function(){});
+                    if (isUpdate) {
+                        savePerson(updateUrl, person, function () {
+                        });
+                    } else {
+                        savePerson(saveUrl, person, function () {
+                        });
+                    }
                 }else{
-                  savePerson(saveUrl, person, function(){});
+                    $.alert("请将信息填写完整");
                 }
             },
             onCancel: function() {
@@ -128,18 +132,20 @@ $(function() {
                 detailed_address: person.detailed_address,
                 headpic: person.headpic
             },
-            beforeSend: function() {
-                $.showLoading('请稍候...');
-            },
             success: function(result, status, xhr) {
                 if (result.errorcode == "0") {
                   window.location.href = 'msg_success.html';
                 }else{
-                  alert('error');
+                    window.location.href = 'msg_error.html';
                 }
             },
+            error: function (xhr, status, error) {
+                setTimeout(function () {
+                    $.alert("请检查您的网络是否通畅",function () {
+                    })
+                },0)
+            },
             complete: function(status, xhr) {
-                console.info('complete');
                 $.hideLoading();
             }
         });

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>佳医比邻</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/api.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../css/flex.css" /> -->
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <style>
+        .bluetooth-icon {
+            height: 25px !important;
+            margin-right: 5px;
+        }
+
+        .js_show {
+            opacity: 1;
+        }
+
+        .upload-remind {
+            margin: 15px 30px;
+            color: #333333;
+        }
+
+        .upload-remind img {
+            width: 35px;
+            height: 35px;
+            margin-right: 8px;
+        }
+
+        .page__category .weui-cells {
+            margin-top: 0;
+        }
+
+        .drop-list-groups {
+            width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        .drop-list-groups ul {
+            list-style: none
+        }
+
+        .drop-list-groups ul li {
+            background-color: #fff;
+            overflow: hidden;
+            border-radius: 2px;
+            margin-top: 10px;
+        }
+
+        .drop-list-groups .page__category {
+            height: 0;
+            overflow: hidden
+        }
+
+        .drop-list-groups .page__category-content {
+            opacity: 0;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+        }
+
+        .drop-list-groups li.js_show .page__category {
+            height: auto
+        }
+
+        .drop-list-groups li.js_show .page__category-content {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            transform: translateY(0)
+        }
+
+        .drop-list-groups li.js_show .double-arrow {
+            transform: rotate(-180deg);
+        }
+
+        .drop-list-groups li:first-child {
+            margin-top: 0
+        }
+
+        .list-groups-headline {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: left;
+            font-size: 16px;
+            color: #20aca5;
+            padding: 10px 15px;
+            border-top: 1px solid #20a5ac;
+            border-bottom: 1px solid #20a5ac;
+        }
+    </style>
+</head>
+
+<body ontouchstart>
+    <div class="page">
+        <header>
+            <div class="header">
+                <div class="top-left">
+                    <img src="../image/return1.png" alt="" />
+                </div>
+                <p class="title">血压心率</p>
+                <div class="top-right">
+                    <img class="bluetooth-icon" src="../image/bluetooth.png" alt="" />
+                    <span>蓝牙上传</span>
+                </div>
+            </div>
+        </header>
+        <section class="content-container">
+            <div class="">
+                <div class="upload-remind flex-r flex-align-center flex-justify-center ">
+                    <img src="../image/warning.png" alt="" />
+                    <p>血压手动上传方式：静息5-10分钟状态下测量三次，依次将数据上传。</p>
+                </div>
+                <div class="weui-panel">
+                    <div class="weui-panel__bd">
+                        <a class="weui-cell weui-cell_access" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <label class="weui-label">测量时间</label>
+                            </div>
+                            <div class="weui-cell__ft">
+                                <input class="weui-input input-right" id="measureTime" type="text" value="">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="drop-list-groups">
+                    <ul>
+                        <li>
+                            <div class="js_category list-groups-headline">
+                                <p class="flex-1">第一次测量</p>
+                                <div class="flex-r">
+                                    <div class="double-arrow">
+                                        <span class="arrow-down"></span>
+                                        <span class="arrow-down"></span>
+                                    </div>
+                                    <p class="fold">展开</p>
+                                </div>
+                            </div>
+                            <div class="page__category js_categoryInner">
+                                <div class="page__category-content weui-cells" id="firstMeasure">
+                                    <div class="weui-cell">
+                                        <div class="weui-cell__hd">
+                                            <label class="weui-label">收缩压</label>
+                                        </div>
+                                        <div class="weui-cell__bd">
+                                            <input class="weui-input input-right systolic_pressure" id="shous1" type="text" onblur="validate(this.id);"/>
+                                        </div>
+                                        <div class="weui-cell__ft">
+                                            <span>mmHg</span>
+                                        </div>
+                                    </div>
+                                    <div class="weui-cell">
+                                        <div class="weui-cell__hd">
+                                            <label class="weui-label">舒张压</label>
+                                        </div>
+                                        <div class="weui-cell__bd">
+                                            <input class="weui-input input-right diastolic_pressure" id="shuz1" type="text" onblur="validate(this.id);"/>
+                                        </div>
+                                        <div class="weui-cell__ft">
+                                            <span>mmHg</span>
+                                        </div>
+                                    </div>
+                                    <div class="weui-cell">
+                                        <div class="weui-cell__hd">
+                                            <label class="weui-label">静息心率</label>
+                                        </div>
+                                        <div class="weui-cell__bd">
+                                            <input class="weui-input input-right restingHR" type="text" id="jingx1" onblur="validate(this.id);"/>
+                                        </div>
+                                        <div class="weui-cell__ft">
+                                            <span>次/分钟</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="js_category list-groups-headline">
+                                <p class="flex-1">第二次测量</p>
+                                <div class="flex-r">
+                                    <div class="flex-c flex-justify-center flex-align-center double-arrow">
+                                        <span class="arrow-down"></span>
+                                        <span class="arrow-down"></span>
+                                    </div>
+                                    <p class="fold">展开</p>
+                                </div>
+                            </div>
+                            <div class="page__category js_categoryInner">
+                                <div class="page__category-content weui-cells" id="secondMeasure">
+                                    <div class="weui-cell">
+                                        <div class="weui-cell__hd">
+                                            <label class="weui-label">收缩压</label>
+                                        </div>
+                                        <div class="weui-cell__bd">
+                                            <input class="weui-input input-right systolic_pressure" id="shous2" type="text" onblur="validate(this.id);"/>
+                                        </div>
+                                        <div class="weui-cell__ft">
+                                            <span>mmHg</span>
+                                        </div>
+                                    </div>
+                                    <div class="weui-cell">
+                                        <div class="weui-cell__hd">
+                                            <label class="weui-label">舒张压</label>
+                                        </div>
+                                        <div class="weui-cell__bd">
+                                            <input class="weui-input input-right diastolic_pressure" id="shuz2" type="text" onblur="validate(this.id);"/>
+                                        </div>
+                                        <div class="weui-cell__ft">
+                                            <span>mmHg</span>
+                                        </div>
+                                    </div>
+                                    <div class="weui-cell">
+                                        <div class="weui-cell__hd">
+                                            <label class="weui-label">静息心率</label>
+                                        </div>
+                                        <div class="weui-cell__bd">
+                                            <input class="weui-input input-right restingHR" id="jingx2" type="text" onblur="validate(this.id);"/>
+                                        </div>
+                                        <div class="weui-cell__ft">
+                                            <span>次/分钟</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="js_category list-groups-headline">
+                                <p class="flex-1">第三次测量</p>
+                                <div class="flex-r">
+                                    <div class="flex-c flex-justify-center flex-align-center double-arrow">
+                                        <span class="arrow-down"></span>
+                                        <span class="arrow-down"></span>
+                                    </div>
+                                    <p class="fold">展开</p>
+                                </div>
+                            </div>
+                            <div class="page__category js_categoryInner">
+                                <div class="page__category-content weui-cells" id="threeMeasure">
+                                    <div class="weui-cell">
+                                        <div class="weui-cell__hd">
+                                            <label class="weui-label">收缩压</label>
+                                        </div>
+                                        <div class="weui-cell__bd">
+                                            <input class="weui-input input-right systolic_pressure" id="shous3" type="text" onblur="validate(this.id);"/>
+                                        </div>
+                                        <div class="weui-cell__ft">
+                                            <span>mmHg</span>
+                                        </div>
+                                    </div>
+                                    <div class="weui-cell">
+                                        <div class="weui-cell__hd">
+                                            <label class="weui-label">舒张压</label>
+                                        </div>
+                                        <div class="weui-cell__bd">
+                                            <input class="weui-input input-right diastolic_pressure" id="shuz3" type="text" onblur="validate(this.id);"/>
+                                        </div>
+                                        <div class="weui-cell__ft">
+                                            <span>mmHg</span>
+                                        </div>
+                                    </div>
+                                    <div class="weui-cell">
+                                        <div class="weui-cell__hd">
+                                            <label class="weui-label">静息心率</label>
+                                        </div>
+                                        <div class="weui-cell__bd">
+                                            <input class="weui-input input-right restingHR" id="jingx3" type="text" onblur="validate(this.id);"/>
+                                        </div>
+                                        <div class="weui-cell__ft">
+                                            <span>次/分钟</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="weui-btn-area">
+                    <a class="weui-btn btn-default-submit" href="javascript:" id="submitBtn">保存</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<!-- <script type="text/javascript" src="../script/plugins/weui/weui.min.js"></script> -->
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+
+    //验证数据合法性
+    function validate(id) {
+        if(isNaN($('#'+id).val()) || $('#'+id).val().length>5 ){
+            setTimeout(function () {
+                $.alert('请填写正确且合适的信息（数字）', function () {
+                    $('#'+id).focus();
+                });
+            },0)
+        }
+    }
+
+    $(function() {
+        $('header').on('click', '.top-left', function() {
+            window.location.href = 'heartRateRecord.html';
+        });
+    });
+</script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script type="text/javascript" src="../js/pages/heartRateRecord_save.js"></script>
+
+</html>

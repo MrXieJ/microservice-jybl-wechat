@@ -1,0 +1,68 @@
+<!doctype html>
+<html >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <title>佳医比邻</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/api.css" /> -->
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <div class="header">
+                <div class="top-left">
+                    <img src="../image/return1.png" alt="" />
+                </div>
+                <p class="title">我购买的服务</p>
+            </div>
+        </header>
+        <section class="content-container">
+            <div class="weui-msg">
+                <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+                <div class="weui-msg__text-area">
+                    <h2 class="weui-msg__title">操作成功</h2>
+                    <p class="weui-msg__desc">
+                        您成功购买<span class="">xx</span>医生 “
+                        <span class="">xxxxxx</span>” 服务
+                    </p>
+                    <p class="weui-msg__desc">
+                        服务期： <span class="">2017年6月至2018年6月</span>
+                    </p>
+                </div>
+                <div class="weui-msg__opr-area">
+                    <p class="weui-btn-area">
+                        <a href="javascript:window.history.back(-1);" class="weui-btn btn-default-mid btn-outline">返回</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+<!-- <script type="text/javascript" src="../script/plugins/apicloud/api.js"></script> -->
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<!-- <script type="text/javascript" src="../js/plugins/weui/weui.min.js"></script> -->
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+
+    $(function() {
+        $('header').on('click', '.top-left', function() {
+            window.history.back();
+        });
+    });
+</script>
+<script type="text/javascript" src="../js/tools.js"></script>
+</html>

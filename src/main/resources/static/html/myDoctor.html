@@ -1,0 +1,147 @@
+<!doctype html>
+<html >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <title>佳医比邻</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/api.css" /> -->
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <style type="text/css">
+        .service-t {
+            font-weight: normal !important;
+        }
+
+        .single-arrow-down.unfold {
+            transform: rotate(-180deg);
+        }
+
+        .information{
+          font-size: 14px;
+        }
+
+        .introduce{
+          font-size: 14px;
+          color: #4e4d4d;
+        }
+        .title-right{
+            width:90px;
+        }
+        .title-left{
+            width:80%;
+        }
+        .title-left .title-ellipsis {
+            margin-right: 30px;
+        }
+        .cs-circle-check label {
+            height: auto;
+        }
+        .cs-circle-check label, .cs-square-check label {
+            white-space:normal;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <div class="header">
+                <div class="top-left">
+                    <img src="../image/return1.png" alt="" />
+                </div>
+                <p class="title">我的医生</p>
+            </div>
+        </header>
+        <section class="content-container">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img class="img" src="../image/homepage.png"></img>
+                    </div>
+                </div>
+                <div class="portait-img flex-c flex-align-center flex-justify-center">
+                    <img id="portait" src="../image/touxiang-2x.png">
+                    <p>
+                        <span class="" id="personName"></span>
+                        <span class="information" id="personDepartment"></span>
+                         |
+                        <span class="information" id="personPost"></span>
+                    </p>
+                    <p class="information" id="personHospital"></p>
+                </div>
+                <div class="operate-btn flex-r">
+                    <a id="share" href="" class="">
+                        <img src="../image/share.png" alt="" />
+                        <span>分享</span>
+                    </a>
+                    <a id="a_2evaluate" href="" class="">
+                        <img src="../image/share.png" alt="" />
+                        <span>评价</span>
+                    </a>
+                </div>
+            </div>
+            <div class="weui-panel">
+                <div class="weui-panel__hd headline">医生简介</div>
+                <div class="weui-panel__bd">
+                    <div class="weui-media-box weui-media-box_text">
+                        <p class="product-title">
+                            <img src="../image/speciality.png" alt="" />
+                            <span>擅长</span>
+                        </p>
+                        <p class="introduce" id="personAdept">
+                        </p>
+                    </div>
+                    <div class="weui-media-box weui-media-box_text">
+                        <p class="product-title">
+                          <img src="../image/experience.png" alt="" />
+                          <span>职业经验</span>
+                        </p>
+                        <p class="introduce" id="personExperience">
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-panel weui-panel_access">
+                <div class="weui-panel__hd headline">服务产品</div>
+                <div class="weui-panel__bd" id="serviceList">
+
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="footer">
+                <div class="flex-r purchase-button">
+
+                    <div class="box-one"  style="background-color:#fcfcfc;" disabled="true">
+                        <a href="msgBoard.html" style="color: #20a6ac;" id="consult">咨询医生</a>
+                    </div>
+
+                    <div class="box-one btn-default-color"  disabled="true">
+                        <a href="javascript:void(0);" class="text-white" id="purchase">购买</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript">
+    $(function() {
+        FastClick.attach(document.body);
+
+    });
+
+
+</script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script type="text/javascript" src="../js/pages/myDoctor.js"></script>
+
+</html>

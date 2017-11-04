@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+        <title>联系我们</title>
+        <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+        <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+        <link rel="stylesheet" type="text/css" href="../css/api.css" />
+        <link rel="stylesheet" type="text/css" href="../css/flex.css" />
+        <link rel="stylesheet" type="text/css" href="../css/commen.css" />
+        <style>
+            html{
+                background-color: white;
+            }
+            #header{
+                background-color: #20a5ac;
+            }
+            #header p{
+                color: #ffffff;
+            }
+            .wrap{
+                padding-top: 44px;
+                background-color: white;
+            }
+            .main{
+                height: 600px;
+                background-image: url("../../image/tbeijingu-@3x.png");
+                background-repeat: no-repeat;
+                background-size: 100% auto;
+                background-position: top;
+            }
+            .icon{
+                height: 64px;
+                width: 74px;
+                margin: 23px;
+                background-color: white;
+                padding: 10px 5px;
+                border-radius: 6px;
+            }
+            .container{
+                background-color: white;
+              padding: 20px 10px;
+                margin: 0 15px;
+                border-radius: 6px;
+                box-shadow: 3px 3px 3px #9e9e9e;
+            }
+            .text{
+                font-size: 14px;
+                color: #333333;
+            }
+            .text2{
+                font-size: 14px;
+                color: #20a5ac;
+            }
+            .icon2{
+                height: 16px;
+                width: 16px;
+                margin-right: 5px;
+            }
+            .row{
+                margin: 10px 0;
+            }
+            .input{
+                height: 112px;
+                margin: 10px 0;
+                align-self: stretch;
+                border: 1px solid #E2E2E2;
+                resize: none;
+                font-size: 14px;
+                line-height: 1.5;
+            }
+            ::-webkit-input-placeholder {
+                color: #b1b1b1;
+                font-size: 13px;
+                line-height: 12px;
+                padding: 10px;
+            }
+            .submit {
+                background-color: #20a6ac;
+                height: 44px;
+                border-radius: 3px;
+                color: white;
+                font-size: 18px;
+                line-height: 44px;
+                outline: none;
+                margin: 15px 15%;
+            }
+            .icon3{
+                width: 102px;
+                height: 21px;
+                margin: 20px;
+            }
+        </style>
+</head>
+<body>
+<div class="wrap" id="wrap">
+    <div id="header" class="header flex-r flex-align-center flex-justify-center">
+        <img class="back" onclick="back()" src="../image/return1.png" />
+        <p class="title flex-1">联系我们</p>
+    </div>
+    <div class="main flex-c flex-align-center">
+        <img class="icon" src="../image/LOGO@3x.png" />
+        <div class="container flex-c">
+            <p class="text">感谢您使用“佳医比邻”健康管理平台，若您在使用过程中有任何问题，欢迎您向我们反馈，您的建议是我们前进的最大动力！</p>
+            <div class="row flex-r flex-align-center">
+                <img class="icon2" src="../image/Shape-1@3x.png" />
+                <p class="text2">服务热线：020-26118711</p>
+            </div>
+            <div class="row flex-r flex-align-center">
+                <img class="icon2" src="../image/Ellipse-1@3x.png" />
+                <p class="text2">服务网站：www.e-tecsun.com</p>
+            </div>
+            <textarea id="suggesttion" class="input flex-1" placeholder="请填写您的宝贵意见"></textarea>
+            <button id="suggestsub" class="submit">提交</button>
+        </div>
+        <img class="icon3" src="../image/tecsun_logo2@3x.png">
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script type="text/javascript" src="../js/commen.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+
+</script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script type="text/javascript" src="../js/pages/contactus.js"></script>
+
+</html>

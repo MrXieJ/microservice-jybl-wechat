@@ -1,0 +1,92 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <title>佳医比邻</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/api.css" /> -->
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <style type="text/css">
+        .notification-remind {
+            height: 40px;
+            line-height: 40px;
+            margin-top: 10px;
+            color: #d01111;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <div class="header">
+                <div class="top-left">
+                    <img src="../image/return1.png" alt="" />
+                </div>
+                <p class="title">消息通知</p>
+                <div class="top-right">
+                    <a class="visible" href="javascript:void(0);">删除</a>
+                    <img class="unvisible" src="../image/trash.png" alt="" />
+                </div>
+            </div>
+        </header>
+        <section class="content-container">
+            <div class="notification-remind unvisible">
+                <p>您有新的健康任务，请注意查收</p>
+            </div>
+            <div class="weui-panel weui-panel_access">
+                <div class="weui-panel__bd" id="notificationList">
+                    <!-- <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                        <p hidden="hidden" data-id='1'></p>
+                        <div class="cs-circle-check cs-check-hidden">
+                            <input id="check1" class="check" name="" type="checkbox" />
+                            <label for="check1" class=""></label>
+                        </div>
+                        <div class="weui-media-box__hd">
+                            <img class="weui-media-box__thumb" src="../image/voice.png" alt="" />
+                            <span class="red-dot"></span>
+                        </div>
+                        <div class="weui-media-box__bd">
+                            <div class="flex-r flex-align-center flex-justify-between">
+                                <h4 class="weui-media-box__title">
+                              标题：<span name="noti-title">运动</span>
+                            </h4>
+                                <p class="weui-media-box__desc" name="noti-time">
+                                    2017-08-24 16:40:23
+                                </p>
+                            </div>
+                            <p class="weui-media-box__desc text-default">
+                                目标：<span name="noti-target">1000步</span>
+                            </p>
+                        </div>
+                    </a> -->
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+<!-- <script type="text/javascript" src="../script/plugins/apicloud/api.js"></script> -->
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<!-- <script type="text/javascript" src="../js/plugins/weui/weui.min.js"></script> -->
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        FastClick.attach(document.body);
+    });
+
+    $(function() {
+        $('header').on('click', '.top-left', function() {
+            window.history.back();
+        });
+    });
+</script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script type="text/javascript" src="../js/pages/notification.js"></script>
+</html>

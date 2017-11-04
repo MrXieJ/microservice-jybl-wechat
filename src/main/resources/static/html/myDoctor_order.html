@@ -1,0 +1,101 @@
+<!doctype html>
+<html >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <title>佳医比邻</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/api.css" /> -->
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <style type="text/css">
+        .upload-remind {
+            margin: 15px 30px;
+            color: #333333;
+        }
+
+        .upload-remind img {
+            width: 35px;
+            height: 35px;
+            margin-right: 8px;
+        }
+
+        .protocol {
+            padding: 10px 15px;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <div class="header">
+                <div class="top-left">
+                    <img src="../image/return1.png" alt="" />
+                </div>
+                <p class="title">购买提醒</p>
+            </div>
+        </header>
+        <section class="content-container">
+            <div class="upload-remind flex-r flex-align-center">
+                <img src="../image/warning.png" alt="" />
+                <p>您选择购买以下服务，请认真核对后确认购买！
+                </p>
+            </div>
+            <div class="weui-panel weui-panel_access">
+                <div class="weui-panel__bd" id="orderList">
+                </div>
+            </div>
+            <div class="protocol">
+                <div class="cs-square-check service-content">
+                    <input id="checkProcotol" class="check" type="checkbox" checked="true" />
+                    <label for="checkProcotol" class="">
+                        我已阅读并同意<a href="javascript:void(0);" class="text-default">《服务协议》</a>
+                    </label>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="footer">
+                <div class="flex-r purchase-button">
+                    <div class="box-two btn-color-red">
+                        <a href="javascript:void(0);" class="text-white">
+                          共<span id="totalOrders">7</span>项&nbsp;
+                          合计：<span id="totalExpense">0</span>元                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      enses">0</span>元
+                        </a>
+                    </div>
+                    <div class="box-one btn-color-white">
+                        <a href="javascript:void(0);" class="text-default" id="cancel">取消</a>
+                    </div>
+                    <div class="box-one btn-default-color">
+                        <a href="javascript:void(0);" class="text-white" id="confirm">确定</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+<!-- <script type="text/javascript" src="../script/plugins/apicloud/api.js"></script> -->
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<!-- <script type="text/javascript" src="../js/plugins/weui/weui.min.js"></script> -->
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        FastClick.attach(document.body);
+    });
+
+    $(function() {
+        $('header').on('click', '.top-left', function() {
+            window.history.back();
+        });
+    });
+</script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script type="text/javascript" src="../js/pages/myDoctor_order.js"></script>
+
+</html>

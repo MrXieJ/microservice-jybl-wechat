@@ -1,46 +1,47 @@
 $(function() {
-    var openid = getUrlParam('appid');
+    var wechat_id = getUrlParam('appid');
     var headimg = getUrlParam('headimg');
-    $('#portait').attr('src', headimg);
-    
+    if (headimg) {
+        $('#portait').attr('src', headimg);
+    }
+
     $.ajax({
         url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/get',
         type: 'GET',
+        timeout: 30000,
         data: {
-            wechat_id: openid
+            wechat_id: wechat_id
         },
         beforeSend: function() {
             $.showLoading();
         },
         success: function(result, status, xhr) {
-            if (!result || result.errorcode!='0') {
-                alert('data is null');
+            if (result.errorcode!="0") {
+                     window.location.href = 'msg_error.html';
             } else {
-                var data = result.data;
-                $('#name').val(data.name);
-                $('#identify').val(data.id_card);
-                $('#sex').val(data.sex);
-                $('#age').val(data.age);
-                $('#telephone').val(data.phone);
-                $('#address').val(data.address);
-                $('#detail').val(data.detailed_address);
+                var presult=result.data;
+                $('#name').val(presult.name);
+                $('#identify').val(presult.id_card);
+                $('#sex').val(presult.sex);
+                $('#age').val(presult.age);
+                $('#telephone').val(presult.phone);
+                $('#address').val(presult.address);
+                $('#detail').val(presult.detailed_address);
             }
-            console.info('success');
+        },
+        error: function(xhr, status, error) {
+            $.alert("网络不给力",function () {
+                javascript:WeixinJSBridge.call('closeWindow');
+            })
         },
         complete: function(status, xhr) {
-            console.info('complete');
             $.hideLoading();
         }
     });
 
-    // 返回
-    $('header').on('click', '.return-op', function() {
-        window.history.back(-1);
-    });
-
     // 修改
     $('#modify').on('click', function() {
-        var para = '?appid=' + openid + '&headimg=' + headimg;
+        var para = '?appid=' + wechat_id + '&headimg=' + headimg;
         window.location.href = 'personSave.html' + para;
     });
 });

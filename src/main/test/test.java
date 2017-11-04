@@ -1,7 +1,7 @@
-package com.github.binarywang.demo.wechat.test;
+package com.demo.wechat.test;
 
-import com.github.binarywang.demo.wechat.service.WxUrlService;
-import com.github.binarywang.demo.wechat.service.qiniu.QiniuService;
+import com.demo.wechat.service.WxUrlService;
+import com.demo.wechat.service.qiniu.QiniuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,0 +1,80 @@
+<!doctype html>
+<html >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <title>佳医比邻</title>
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <style type="text/css">
+        .evaluate-mesg {
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #54a7ca;
+        }
+
+        .evaluate-hint {
+            padding: 5px 15px;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #a60909;
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <div class="header">
+                <div class="top-left">
+                    <img src="../image/return1.png" alt="" />
+                </div>
+                <p class="title">心血管风险评估</p>
+            </div>
+        </header>
+        <section class="content-container">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img class="img" src="../image/tu.png"></img>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="flex-r flex-align-center flex-justify-between evaluate-mesg">
+                <p>已有<span id="totalNumber">0</span>人进行评估</p>
+                <div class="button_sp_area flex-r flex-align-center">
+                    <a href="javascript:;" class="weui-btn btn-default-circle-mini btn-color-green">风险评估</a>
+                </div>
+            </div>
+            <div class="flex-r flex-align-center flex-justify-between evaluate-hint">
+                <p>提示：风险评估每<span class="circle-time">三个月</span>评估一次</p>
+            </div>
+            <div class="weui-panel weui-panel_access">
+                <div class="weui-panel__bd" id="evaluateList">
+
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        FastClick.attach(document.body);
+    });
+
+</script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script type="text/javascript" src="../js/pages/riskEvaluate.js"></script>
+
+</html>

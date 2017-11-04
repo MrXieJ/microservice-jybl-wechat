@@ -1,0 +1,115 @@
+<!doctype html>
+<html >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <title>佳医比邻</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/api.css" /> -->
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <style type="text/css">
+        .evaluate-hint {
+            font-size: 14px;
+            color: #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <div class="header">
+                <div class="top-left">
+                    <img src="../image/return1.png" alt="" />
+                </div>
+                <p class="title">健康档案</p>
+            </div>
+        </header>
+        <section class="content-container">
+            <div class="weui-panel weui-panel_access">
+                <div class="weui-panel__bd">
+                    <a href="healthInfo.html" class="weui-media-box weui-media-box_appmsg">
+                        <div class="weui-media-box__hd">
+                            <img class="weui-media-box__thumb" src="../image/health_info.png" alt="" />
+                        </div>
+                        <div class="weui-media-box__bd">
+                            <h4 class="weui-media-box__title">健康信息</h4>
+                        </div>
+                        <div class="box-icon-right">
+                            <img src="../image/Shape-1.png" alt="" />
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="weui-panel weui-panel_access">
+                <div class="weui-panel__bd">
+                    <a href="biochemicalExam.html" class="weui-media-box weui-media-box_appmsg">
+                        <div class="weui-media-box__hd">
+                            <img class="weui-media-box__thumb" src="../image/biochemical_exam.png" alt="" />
+                        </div>
+                        <div class="weui-media-box__bd">
+                            <h4 class="weui-media-box__title">生化检查</h4>
+                        </div>
+                        <div class="box-icon-right">
+                            <img src="../image/Shape-1.png" alt="" />
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="weui-panel weui-panel_access">
+                <div class="weui-panel__bd">
+                    <a href="heartRateRecord.html" class="weui-media-box weui-media-box_appmsg">
+                        <div class="weui-media-box__hd">
+                            <img class="weui-media-box__thumb" src="../image/heart_rate.png" alt="" />
+                        </div>
+                        <div class="weui-media-box__bd">
+                            <h4 class="weui-media-box__title">血压心率</h4>
+                        </div>
+                        <div class="box-icon-right">
+                            <img src="../image/Shape-1.png" alt="" />
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="weui-panel weui-panel_access">
+                <div class="weui-panel__bd">
+                    <a href="cardiograph.html" class="weui-media-box weui-media-box_appmsg">
+                        <div class="weui-media-box__hd">
+                            <img class="weui-media-box__thumb" src="../image/cardiograph.png" alt="" />
+                        </div>
+                        <div class="weui-media-box__bd">
+                            <h4 class="weui-media-box__title">心电图</h4>
+                        </div>
+                        <div class="box-icon-right">
+                            <img src="../image/Shape-1.png" alt="" />
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <p class="weui-btn-area text-center">
+                <a href="javascript:void(0);" class="weui-btn btn-default-big btn-default-flat btn-outline">
+                  风险评估
+                </a>
+            </p>
+            <p class="text-center">
+                <span class="evaluate-hint">注意：所有信息提交完成才可进行风险评估</span>
+            </p>
+        </section>
+    </div>
+</body>
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        FastClick.attach(document.body);
+    });
+
+</script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script type="text/javascript" src="../js/pages/healthDoc.js"></script>
+</html>

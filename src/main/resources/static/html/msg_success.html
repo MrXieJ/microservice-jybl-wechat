@@ -27,17 +27,20 @@
             </div>
             <div class="weui-msg__opr-area">
                 <p class="weui-btn-area">
-                    <a href="javascript:WeixinJSBridge.call('closeWindow');" class="weui-btn weui-btn_primary">返回公众号</a>
+                    <a href="javascript:window.history.back();" class="weui-btn weui-btn_primary">返回上一页</a>
                 </p>
             </div>
         </div>
     </div>
 </body>
 <script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<!-- <script type="text/javascript" src="../js/plugins/weui/weui.min.js"></script> -->
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
 <script>
     $(function() {
         FastClick.attach(document.body);
     });
 </script>
-
+<script type="text/javascript" src="../js/tools.js"></script>
 </html>

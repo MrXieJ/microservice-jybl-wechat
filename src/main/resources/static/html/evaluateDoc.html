@@ -1,0 +1,179 @@
+<!doctype html>
+<html >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <title>佳医比邻</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/api.css" /> -->
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <link rel="stylesheet" type="text/css" href="../css/eval-doc.css" />
+</head>
+
+<body>
+<div class="page">
+    <header>
+        <div class="header">
+            <div class="top-left">
+                <img src="../image/return1.png" alt="" />
+            </div>
+            <p class="title">医生评价</p>
+            <div class="top-right" onclick="evaluateDoc();">确定</div>
+        </div>
+    </header>
+    <section class="content-container">
+        <div class="eval-header">
+            <div class="weui-panel__bd">
+                <div class="weui-flex doc-info">
+                    <img class="doc-avatar" id="doc_avatar" src="" alt="" />
+                    <div class="doc-name" id="doc_name"></div>
+                </div>
+
+                <div class="weui-flex eval-area">
+                    <div class="eval-item">专业水平</div><div class="weui-flex star"><img id="s11" src="../image/star.png" onclick="starTap(11);"/><img id="s12" src="../image/star.png" onclick="starTap(12);"/><img id="s13" src="../image/star.png" onclick="starTap(13);"/><img id="s14" src="../image/star.png" onclick="starTap(14);"/><img id="s15" src="../image/star.png" onclick="starTap(15);"/></div>
+                </div>
+                <div class="weui-flex eval-area">
+                    <div class="eval-item">服务态度</div><div class="weui-flex star"><img id="s21" src="../image/star.png" onclick="starTap(21);"/><img id="s22" src="../image/star.png" onclick="starTap(22);"/><img id="s23" src="../image/star.png" onclick="starTap(23);"/><img id="s24" src="../image/star.png" onclick="starTap(24);"/><img id="s25" src="../image/star.png" onclick="starTap(25);"/></div>
+                </div>
+                <div class="weui-flex eval-area">
+                    <div class="eval-item">回复速度</div><div class="weui-flex star"><img id="s31" src="../image/star.png" onclick="starTap(31);"/><img id="s32" src="../image/star.png" onclick="starTap(32);"/><img id="s33" src="../image/star.png" onclick="starTap(33);"/><img id="s34" src="../image/star.png" onclick="starTap(34);"/><img id="s35" src="../image/star.png" onclick="starTap(35);"/></div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="text-area">
+            <textarea id="text_area" value="" rows="4" placeholder="这里可以更详细地描述你的评价哦"></textarea>
+        </div>
+
+        <div class="checkbox-area">
+            <input id="chxbox_hide" class="check" type="checkbox" checked/>
+            <label for="chxbox_hide" class="">匿名评价</label>
+        </div>
+
+
+
+    </section>
+</div>
+</body>
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script type="text/javascript">
+
+    $('header').on('click', '.top-left', function() {
+        window.history.back();
+    });
+
+    var wechat_id;
+    var phone;
+    var evals = new Array();
+    evals[0] = 5;
+    evals[1] = 5;
+    evals[2] = 5;
+
+    $(function() {
+
+        FastClick.attach(document.body);
+
+        wechat_id = getItem('wechat_id');
+
+        phone = getUrlParam('phone');
+
+        $('#doc_name').html(decodeURI(getUrlParam('name')));
+
+        $('#doc_avatar').attr('src', decodeURI(getUrlParam('avatar')));
+
+    });
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r != null) {
+            return unescape(r[2]);
+        }
+        return null;
+    }
+
+    function starTap(id) {
+        var j, i;
+        if (id >= 31) {
+            j = 31;
+            i = 2;
+        } else if (id >= 21) {
+            j = 21;
+            i = 1;
+        } else {
+            j = 11;
+            i = 0;
+        }
+        evals[i] = id % (j - 1);
+        var t = j + 4;
+        for (; j <= t; j++) {
+            if (j <= id) {
+                $('#s' + j).attr('src', '../image/star.png');
+            } else {
+                $('#s' + j).attr('src', '../image/star_empty.png');
+            }
+        }
+    }
+
+    function evaluateDoc() {
+
+        var d =  {
+           "wechat_id": wechat_id,
+           "phone": phone,
+           "content": $('#text_area').val(),
+           "profession": evals[0],
+           "attitude": evals[1],
+           "speed": evals[2],
+           "anonymity": document.getElementById("chxbox_hide").checked ? 1 : 0
+        }
+
+        $.ajax({
+            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/evaluate',
+            type: 'POST',
+            timeout: 5000,
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(d),
+            beforeSend: function() {
+                $.showLoading();
+            },
+            success: function(result, status, xhr) {
+                $.hideLoading();
+                if (!result || result.errorcode != '0') {
+                    $.hideLoading();
+                    setTimeout(function () {
+                        $.alert('您已经做过评价', function () {
+                            window.history.back();
+                        });
+                    });
+                } else if(result.errorcode == '0'){
+                    $.hideLoading();
+                    setTimeout(function () {
+                        $.alert('评价成功', function () {
+                            window.history.back();
+                        });
+                    });
+                } else {
+                    $.hideLoading();
+                }
+            },
+            error: function(xhr, status, error) {
+                $.hideLoading();
+                setTimeout(function () {
+                        $.alert('请检查您的网络是否通畅',function () {
+                    })
+                });
+            },
+        });
+    }
+
+</script>
+<script type="text/javascript" src="../js/tools.js"></script>
+</html>

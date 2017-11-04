@@ -1,0 +1,126 @@
+body {
+        background-color: #f2f2f2;
+     }
+
+    .container {
+        margin-top: 50px;
+        background-color: white;
+        margin-bottom: 78px;
+    }
+
+    .title-area {
+        margin-left: 15px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 16px;
+        color: #20a5ac;
+        border-bottom: 1px solid #d9d9d9;
+    }
+
+    .patient-name {
+        margin-right: 8px;
+    }
+
+    .patient-sex-age {
+        color: #333;
+    }
+
+    .msg-time {
+        color: #888;
+        font-size: 14px;
+        margin-right: 10px;
+    }
+
+    .text-area {
+        margin-left: 15px;
+        padding: 10px 15px 5px 0;
+        font-size: 16px;
+        color: #545454;
+    }
+
+    .description {
+        margin-left: 8px;
+    }
+
+    .img-area {
+        margin-left: 15px;
+        margin-top: 5px;
+        flex-direction: column;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #d9d9d9;
+    }
+
+    .title {
+        font-size: 16px;
+        color: #333;
+    }
+
+    .img-container {
+        margin-top: 6px;
+        flex-wrap: wrap;
+    }
+
+    .weui-uploader__file img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .reply-area {
+        margin-left: 15px;
+        padding-top: 10px;
+        padding-bottom: 24px;
+    }
+
+    .doc-avatar {
+        height: 52px;
+        width: 52px;
+    }
+
+    .doc-avatar img {
+        height:100%;
+        width:100%;
+    }
+
+    .text-container {
+        flex-direction: column;
+        padding-left: 10px;
+        justify-content: center;
+    }
+
+    .doc-name {
+        font-size: 16px;
+        color: #20a5ac;
+        line-height: 16px;
+    }
+
+    .reply-time {
+        font-size: 14px;
+        color: #999;
+        line-height: 14px;
+        margin-top: 5px;
+    }
+
+    .reply-content {
+        margin-top: 13px;
+        font-size: 15px;
+        color: #999;
+    }
+
+    .btn-area {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        padding: 0 32px 15px 32px;
+    }
+
+    .btn {
+        font-size: 17px;
+        color: white;
+        background-color: #20a6ac;
+    }
+
+    .btn:active {
+        color: #eee;
+        background-color: #10959b;
+    }

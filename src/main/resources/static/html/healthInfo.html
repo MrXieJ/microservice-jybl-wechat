@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>佳医比邻</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/api.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../css/flex.css" /> -->
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <style>
+    </style>
+</head>
+
+<body ontouchstart>
+    <div class="page">
+        <header>
+            <div class="header flex-r flex-align-center flex-justify-center">
+                <div class="top-left">
+                    <img src="../image/return1.png" alt="" />
+                </div>
+                <p class="title">健康信息</p>
+            </div>
+        </header>
+        <section class="content-container">
+            <div class="weui-cells__title">体格检查</div>
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">身高</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input input-right" id="height" type="text" onblur="validate(this.id);" />
+                    </div>
+                    <div class="weui-cell__ft">
+                        <span>cm</span>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">体重</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input input-right" id="weight" type="text" onblur="validate(this.id);"/>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <span>kg</span>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">BMI</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input input-right" id="bmi" type="text" disabled="true" />
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells__title">病史与家族史</div>
+            <div class="weui-cells">
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <label class="weui-label">糖尿病</label>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-input input-right" id="diabetics" type="text" value="">
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <label class="weui-label">冠心病</label>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-input input-right" id="coronaryHeart" type="text" value="">
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <label class="weui-label">脑卒中</label>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-input input-right" id="stroke" type="text" value="">
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <label class="weui-label">高血压</label>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-input input-right" id="hypertention" type="text" value="">
+                    </div>
+                </a>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">其他病史</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input input-right" id="otherHistory" type="text" placeholder="在此输入其他病史" />
+                    </div>
+                </div>
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <label class="weui-label">家族史</label>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-input input-right" id="familyHistory" type="text" value="">
+                    </div>
+                </a>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <textarea class="weui-textarea" id="familyHistoryDetail" rows="2" disabled="true"></textarea>
+                        <div class="weui-textarea-counter"><span>在此输入家族史</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells__title">生活习惯</div>
+            <div class="weui-cells">
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <label class="weui-label">吸烟</label>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-input input-right" id="smoke" type="text" value="">
+                    </div>
+                </a>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">吸烟量</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input input-right" id="smokeAccount" type="text" onblur="validate(this.id);"/>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <span>支/天</span>
+                    </div>
+                </div>
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <label class="weui-label">饮酒</label>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-input input-right" id="drink" type="text" value="">
+                    </div>
+                </a>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">饮酒量</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input input-right" id="drinkAccount" type="text" onblur="validate(this.id);"/>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <span>ml/天</span>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-btn-area">
+                <a class="weui-btn btn-default-submit" href="javascript:" id="submitBtn">保存</a>
+            </div>
+        </section>
+    </div>
+</body>
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<!-- <script type="text/javascript" src="../script/plugins/weui/weui.min.js"></script> -->
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+
+    //验证数据合法性
+    function validate(id) {
+        switch (id) {
+            case "height":{
+                if(isNaN($('#height').val()) || $('#height').val().length>5 ){
+                    $.toptip('请填写正确且合适的身高信息（数字）', 'warning');
+                    $('#height').focus();
+                }
+            }
+                break;
+            case "weight": {
+                if(isNaN($('#weight').val()) || $('#weight').val().length>3 ){
+                    $.toptip('请填写正确且合适的体重信息（数字）', 'warning');
+                    $('#weight').focus();
+                }
+            }
+                break;
+            case "smokeAccount":{
+                if(isNaN($('#smokeAccount').val()) || $('#smokeAccount').val().length>4 ){
+                    setTimeout(function () {
+                        $.alert("请填写合适且正确的吸烟量", function() {
+                            $('#smokeAccount').focus();
+                        });
+                    },0)
+                }
+            }
+                break;
+            case "drinkAccount":{
+                if(isNaN($('#drinkAccount').val()) || $('#drinkAccount').val().length>4 ){
+                    setTimeout(function () {
+                        $.alert("请填写合适且正确的饮酒量", function() {
+                            $('#drinkAccount').focus();
+                        });
+                    },0)
+                }
+            }
+                break;
+        }
+    }
+</script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script type="text/javascript" src="../js/pages/healthInfo.js"></script>
+
+</html>

@@ -1,0 +1,29 @@
+html {
+    background-color: #f2f2f2;
+}
+.wrap{
+    background-color: #F2F2F2;
+    width: 100%;
+}
+.header{
+    height: 44px;
+    line-height: 44px;
+    color: #black;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 500;
+}
+.back {
+    height: 21px;
+    width: 11px;
+    padding: 10px 30px 10px 10px;
+}
+.title{
+    display: inline-block;
+    text-align: center;
+    margin-right: 51px;
+    color: #333333;
+}

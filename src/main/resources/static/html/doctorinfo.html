@@ -1,109 +1,133 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html >
 
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
-		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no" />
-		<link rel="stylesheet" type="text/css" href="../css/doctorinfo.css" />
-		<link rel="stylesheet" type="text/css" href="../css/flex.css" />
-		<script src="../js/jquery-3.2.1.min.js"></script>
-		<script src="../js/doctorinfo.js"></script>
-		<title>佳医比邻</title>
-	</head>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+	<title>佳医比邻</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../css/api.css" /> -->
+	<!-- WEIXIN UI CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/weui.css" />
+	<link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+	<!-- CUSTOM DEFINE CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+	<style type="text/css">
+		.service-t {
+			font-weight: normal !important;
+		}
 
-	<body>
-		<div class="main">
-			<div class="top">
-				<div class="top_name flex-r flex-justify-between">
-					<div class="top_img">
-						<img src="../image/Shape-10.png" onclick="javascript:window.history.back(-1);" />
-					</div>
-					<div class="top_doctor flex-justify-center">
-						<p id="topname">王小虎</p>
-					</div>
-					<div class="top_right">
-					</div>
-				</div>
-				<div class="top_content">
-					<div class="top_share  flex-r flex-justify-end">
-						<div class="share  flex-r flex-justify-start">
-							<img src="../image/Share@2x.png" />
-							<div>分享</div>
-						</div>
-					</div>
-					<div class="top_info  flex-c  flex-align-center">
-						<div class="div_img flex-c flex-align-center flex-justify-center">
-							<img src="../image/touxiang1@2x.png" />
-						</div>
-						<div class="info flex-c flex-align-center">
+		.single-arrow-down.unfold {
+			transform: rotate(-180deg);
+		}
 
-							<div class="first flex-r flex-align-bottom">
-								<p id="midname" class="name">王小虎</p>
-								<p class="department">内科 | 医师</p>
-							</div>
-							<p class="address">广州省第二人民医院</p>
-						</div>
-					</div>
+		.information{
+			font-size: 14px;
+		}
+
+		.introduce{
+			font-size: 14px;
+			color: #4e4d4d;
+		}
+		.title-right{
+			width:90px;
+		}
+		.title-left{
+			width:80%;
+		}
+		.title-left .title-ellipsis {
+			margin-right: 30px;
+		}
+		.cs-circle-check label {
+			height: auto;
+		}
+		.cs-circle-check label, .cs-square-check label {
+			white-space:normal;
+		}
+	</style>
+</head>
+
+<body>
+
+<div class="page">
+	<header>
+		<div class="header">
+			<div class="top-left">
+				<img src="../image/return1.png" alt="" />
+			</div>
+			<p class="title">医生主页</p>
+		</div>
+	</header>
+
+	<section class="content-container">
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<img class="img" src="../image/homepage.png"></img>
 				</div>
 			</div>
-			<div class="kongge">
-
+			<div class="portait-img flex-c flex-align-center flex-justify-center">
+				<img id="portait" src="../image/touxiang-2x.png">
+				<p>
+					<span class="" id="personName"></span>
+					<span class="information" id="personDepartment"></span>
+					&nbsp;|&nbsp;
+					<span class="information" id="personPost"></span>
+				</p>
+				<p class="information" id="personHospital"></p>
 			</div>
-			<div class="mid_intro">
-				<div class="div_intro">
-					<p>医生简介</p>
+		</div>
+		<div class="weui-panel">
+			<div class="weui-panel__hd headline">医生简介</div>
+			<div class="weui-panel__bd">
+				<div class="weui-media-box weui-media-box_text">
+					<p class="product-title">
+						<img src="../image/speciality.png" alt="" />
+						<span>擅长</span>
+					</p>
+					<p class="introduce" id="personAdept">
+					</p>
 				</div>
-				<div class="intro">
-					<div class="intro_content">
-						<div class="flex-r flex-align-bottom">
-							<img src="../image/shancang@2x.png" /><b>擅长</b>
-						</div>
-						<p id="adept">心脑血管专家专诊</p>
-					</div>
-					<div class="intro_content">
-						<div class="flex-r flex-align-bottom">
-							<img src="../image/doctors-case@2x.png" /><b>职业经验：</b>
-						</div>
-						<p id="experience">十年临床经验</p>
-					</div>
+				<div class="weui-media-box weui-media-box_text">
+					<p class="product-title">
+						<img src="../image/experience.png" alt="" />
+						<span>职业经验</span>
+					</p>
+					<p class="introduce" id="personExperience">
+					</p>
 				</div>
 			</div>
-
-			<div class="botm_list">
-				<form>
-
-					<div id="div_service" class="div_service  flex-r flex-align-center">
-						<div class="service_content">
-							<input class="service" id="service1" type="checkbox" />
-							<label for="service1">设计个性化健康管理目标hhhhhhhhhhhhhh</label>
-							<div id="serviceinfo" class="serviceinfo">
-								<div class="infoone flex-r">
-									<div class="count">
-										次数 ：3 
-									</div>
-									<div class="duration">
-										期限 ：6个月
-									</div>
-									
-								</div>
-								<div class="infotwo">
-									适用人群 ：所有人群
-								</div>
-							</div>
-						</div>
-						<p>0元</p>
-						<div id="down" class="down" onclick="down(this);"><img src="../image/Shape-11@2x.png" /></div>
-					</div>
-
-					<div class="dibu">
-
-					</div>
-					<input type="button" value="购买" class="input_button" />
-				</form>
+		</div>
+		<div class="weui-panel weui-panel_access">
+			<div class="weui-panel__hd headline">服务产品</div>
+			<div class="weui-panel__bd" id="serviceList">
 
 			</div>
 		</div>
-	</body>
+	</section>
+	<footer>
+		<div class="footer">
+			<div class="flex-r purchase-button">
+
+				<div class="box-one btn-default-color"  disabled="true">
+					<a href="javascript:void(0);" class="text-white" id="purchase">购买</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+</body>
+
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        FastClick.attach(document.body);
+    });
+
+
+</script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script type="text/javascript" src="../js/pages/doctorinfo.js"></script>
 
 </html>

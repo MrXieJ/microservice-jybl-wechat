@@ -22,98 +22,140 @@
     <div class="page">
         <header>
             <div class="header flex-r flex-align-center flex-justify-center">
-                <div class="return-op">
+                <div class="top-left">
                     <img src="../image/return1.png" alt="" />
                 </div>
                 <p class="title">个人信息</p>
             </div>
         </header>
-        <div class="person-portait">
-            <div class="portait-background">
-                <img src="../image/homepage-2x.png">
-            </div>
-            <div class="portait-img flex-r flex-align-center flex-justify-center">
-                <img id="portait" src="../image/touxiang-2x.png">
-            </div>
-        </div>
-        <div class="weui-cells__title">请完善您的个人信息</div>
-        <div class="weui-cells">
-            <div class="weui-cell">
-                <div class="weui-cell__hd">
-                    <label class="weui-label">姓名</label>
+        <section class="content-container">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img class="img" src="../image/homepage-2x.png"></img>
+                    </div>
                 </div>
-                <div class="weui-cell__bd">
-                    <input class="weui-input input-right" id="name" type="text" placeholder="请填写" />
+                <div class="portait-img flex-r flex-align-center flex-justify-center">
+                    <img id="portait" src="../image/touxiang-2x.png">
                 </div>
             </div>
-            <div class="weui-cell">
-                <div class="weui-cell__hd">
-                    <label class="weui-label">身份证</label>
+            <div class="weui-cells__title">请完善您的个人信息</div>
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">姓名</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input input-right" id="name" type="text" placeholder="请填写" />
+                    </div>
                 </div>
-                <div class="weui-cell__bd">
-                    <input class="weui-input input-right" id="identify" type="number" placeholder="请填写" />
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">身份证</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input input-right" id="identify" type="text" placeholder="请填写" onblur="validate(this.id);"/>
+                    </div>
+                </div>
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <label class="weui-label">性别</label>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-input input-right" id="sex" type="text" value="">
+                    </div>
+                </a>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">年龄</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input input-right" id="age" type="text" placeholder="请填写" onblur="validate(this.id);"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">联系电话</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input input-right" id="telephone" type="text" placeholder="请填写" onblur="validate(this.id);"/>
+                    </div>
+                </div>
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <label class="weui-label">地址</label>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-input input-right" id="address" type="text" value="">
+                    </div>
+                </a>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">详细地址</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input input-right" id="detail" type="text" placeholder="请填写" />
+                    </div>
                 </div>
             </div>
-            <a class="weui-cell weui-cell_access" href="javascript:;">
-                <div class="weui-cell__bd">
-                    <label class="weui-label">性别</label>
-                </div>
-                <div class="weui-cell__ft">
-                    <input class="weui-input input-right" id="sex" type="text" value="">
-                </div>
-            </a>
-            <div class="weui-cell">
-                <div class="weui-cell__hd">
-                    <label class="weui-label">年龄</label>
-                </div>
-                <div class="weui-cell__bd">
-                    <input class="weui-input input-right" id="age" type="number" placeholder="请填写"/>
-                </div>
+            <div class="weui-btn-area">
+                <a class="weui-btn btn-default-submit" href="javascript:" id="submitBtn">保存</a>
             </div>
-            <div class="weui-cell">
-                <div class="weui-cell__hd">
-                    <label class="weui-label">联系电话</label>
-                </div>
-                <div class="weui-cell__bd">
-                    <input class="weui-input input-right" id="telephone" type="number" placeholder="请填写" />
-                </div>
-            </div>
-            <a class="weui-cell weui-cell_access" href="javascript:;">
-                <div class="weui-cell__bd">
-                    <label class="weui-label">地址</label>
-                </div>
-                <div class="weui-cell__ft">
-                    <input class="weui-input input-right" id="address" type="text" value="">
-                </div>
-            </a>
-            <div class="weui-cell">
-                <div class="weui-cell__hd">
-                    <label class="weui-label">详细地址</label>
-                </div>
-                <div class="weui-cell__bd">
-                    <input class="weui-input input-right" id="detail" type="text" placeholder="请填写" />
-                </div>
-            </div>
-        </div>
-        <div class="weui-btn-area">
-            <a class="weui-btn btn-submit" href="javascript:" id="submitBtn">保存</a>
-        </div>
+        </section>
     </div>
-
 </body>
 <script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
 <script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
 <!-- <script type="text/javascript" src="../script/plugins/weui/weui.min.js"></script> -->
 <script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
 <script type="text/javascript" src="../js/plugins/picker/city-picker.js"></script>
-<script type="text/javascript" src="../js/tools.js"></script>
-<script type="text/javascript" src="../js/pages/personSave.js"></script>
 <script>
+
     $(function() {
         FastClick.attach(document.body);
     });
-</script>
-<script type="text/javascript">
-</script>
 
+    $(function() {
+        $('header').on('click', '.top-left', function() {
+            window.history.back();
+        });
+    });
+
+    //验证数据合法性
+    function validate(id) {
+        switch (id) {
+            case "identify": {
+                if (isNaN($('#identify').val().substr(0,17)) ||$('#identify').val().length != 18) {
+                    setTimeout(function () {
+                        $.alert('请填写正确且合适的身份证信息（18位）', function () {
+                            $('#identify').focus();
+                        });
+                    }, 0);
+                }
+            }
+                break;
+            case "age": {
+                if (isNaN($('#age').val()) || $('#age').val().length > 3) {
+                    setTimeout(function () {
+                        $.alert('请填写正确且合适的年龄信息（数字）', function () {
+                            $('#age').focus();
+                        });
+                    },0)
+                }
+            }
+                break;
+            case "telephone": {
+                if (isNaN($('#telephone').val()) || $('#telephone').val().length > 11) {
+                    setTimeout(function () {
+                        $.alert("请填写合适且正确的联系方式信息（数字）", function () {
+                        $('#telephone').focus();
+                    }); }, 0);
+                }
+            }
+                break;
+        }
+    }
+</script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script type="text/javascript" src="../js/pages/personSave.js"></script>
 </html>

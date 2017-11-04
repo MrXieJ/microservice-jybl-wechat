@@ -1,0 +1,67 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <title>佳医比邻</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/api.css" /> -->
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <style type="text/css">
+        .evaluate-chart {
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .evaluate-illustrate {
+            padding: 5px 40px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <div class="header">
+                <div class="top-left">
+                    <img src="../image/return1.png" alt="" />
+                </div>
+                <p class="title">风险评估报告</p>
+            </div>
+        </header>
+        <section class="content-container">
+            <div class="flex-r flex-justify-center flex-align-center">
+                <div class="evaluate-chart" id="indicatorContainerWrap">
+                    <div id="indicatorContainer"></div>
+                    <p class="text-default">患病概率</p>
+                </div>
+            </div>
+            <div class="evaluate-illustrate text-center">
+                <p id="content"></p>
+            </div>
+        </section>
+    </div>
+</body>
+<!-- <script type="text/javascript" src="../script/plugins/apicloud/api.js"></script> -->
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<!-- <script type="text/javascript" src="../js/plugins/weui/weui.min.js"></script> -->
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script type="text/javascript" src="../js/plugins/radialIndicator/radialIndicator.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $('header').on('click', '.top-left', function() {
+            window.history.back();
+        });
+    });
+</script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script type="text/javascript" src="../js/pages/riskEvaluate_report.js"></script>
+</html>

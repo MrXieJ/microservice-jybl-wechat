@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>佳医比邻</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/api.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../css/flex.css" /> -->
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <style>
+        .heart-rate-image {
+            width: 60%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body ontouchstart>
+    <div class="page">
+        <header>
+            <div class="header">
+                <div class="top-left">
+                    <img src="../image/return1.png" alt="" />
+                </div>
+                <p class="title">血压心率</p>
+            </div>
+        </header>
+        <section class="content-container">
+            <div class="weui-msg">
+                <div class="weui-msg__icon-area">
+                    <img class="heart-rate-image" src="../image/data.png" alt="" />
+                </div>
+                <div class="weui-msg__text-area">
+                    <p class="weui-msg__desc text-default">
+                        您还未上传血压数据，请先上传数据！
+                    </p>
+                </div>
+                <div class="weui-msg__opr-area">
+                    <p class="weui-btn-area">
+                        <a href="heartRateRecord_save.html" class="weui-btn btn-default-big btn-default-color" id="upload">
+                      立即上传
+                    </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<!-- <script type="text/javascript" src="../script/plugins/weui/weui.min.js"></script> -->
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+
+    $(function() {
+        $('header').on('click', '.top-left', function() {
+            window.location.href='healthDoc.html';
+        });
+    });
+</script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script type="text/javascript" src="../js/pages/heartRateRecord_upload.js"></script>
+</html>

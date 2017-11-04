@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+     <title>佳医比邻</title>
+     <!-- <link rel="stylesheet" type="text/css" href="../css/api.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../css/flex.css" /> -->
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <style>
+    </style>
+</head>
+
+<body ontouchstart>
+    <div class="page">
+        <header>
+            <div class="header flex-r flex-align-center flex-justify-center">
+                <div class="top-left">
+                    <img src="../image/return1.png" alt="" />
+                </div>
+                <p class="title">生化检查</p>
+            </div>
+        </header>
+        <section class="content-container">
+            <div class="weui-cells__title">总胆固醇</div>
+            <div class="weui-cells" id="chordate">
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <label class="weui-label">测量时间</label>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-input input-right measure-time"  type="text" value="">
+                    </div>
+                </a>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label"></label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input input-right measure-data" id="chordata" type="text" onblur="validate(this.id);"/>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <span>mmol/L</span>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells__title">空腹血糖</div>
+            <div class="weui-cells" id="fastingBloodSugar">
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <label class="weui-label">测量时间</label>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-input input-right measure-time" type="text" value="">
+                    </div>
+                </a>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label"></label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input input-right measure-data" id="fastdata" type="text" onblur="validate(this.id);"/>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <span>mmol/L</span>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells__title">甘三油脂</div>
+            <div class="weui-cells" id="triglyceride">
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <label class="weui-label">测量时间</label>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-input input-right measure-time" type="text" value="">
+                    </div>
+                </a>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label"></label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input input-right measure-data" id="trigdata" type="text" onblur="validate(this.id);"/>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <span>mmol/L</span>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells__title">高密度脂蛋白</div>
+            <div class="weui-cells" id="highLipoprotein">
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <label class="weui-label">测量时间</label>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-input input-right measure-time" type="text" value="">
+                    </div>
+                </a>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label"></label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input input-right measure-data" id="highdata" type="text" onblur="validate(this.id);"/>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <span>mmol/L</span>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells__title">低密度脂蛋白</div>
+            <div class="weui-cells" id="lowLipoprotein">
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <label class="weui-label">测量时间</label>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-input input-right measure-time" type="text" value="">
+                    </div>
+                </a>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label"></label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input input-right measure-data" id="lowdata" type="text" onblur="validate(this.id);"/>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <span>mmol/L</span>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-btn-area">
+                <a class="weui-btn btn-default-submit" href="javascript:" id="submitBtn">保存</a>
+            </div>
+        </section>
+    </div>
+</body>
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<!-- <script type="text/javascript" src="../script/plugins/weui/weui.min.js"></script> -->
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+
+    //验证数据合法性
+    function validate(id) {
+        switch (id) {
+            case "chordata":{
+                if(isNaN($('#chordata').val()) || $('#chordata').val().length>6 ){
+                    setTimeout(function () {
+                        $.alert('请填写正确且合适的总胆固醇信息（数字）', function () {
+                            $('#chordata').focus();
+                        });
+                    },0)
+                }
+            }
+                break;
+            case "fastdata": {
+                if(isNaN($('#fastdata').val()) || $('#fastdata').val().length>6 ){
+                    setTimeout(function () {
+                        $.alert('请填写正确且合适的空腹血糖信息（数字）', function () {
+                            $('#fastdata').focus();
+                        });
+                    },0)
+                }
+            }
+                break;
+            case "trigdata":{
+                if(isNaN($('#trigdata').val()) || $('#trigdata').val().length>6 ){
+                    setTimeout(function () {
+                        $.alert("请填写合适且正确的甘三油脂信息（数字）", function() {
+                            $('#tirgdata').focus();
+                        });
+                    },0)
+                }
+            }
+                break;
+            case "highdata":{
+                if(isNaN($('#highdata').val()) || $('#highdata').val().length>6 ){
+                    setTimeout(function () {
+                        $.alert("请填写合适且正确的高密度脂蛋白（数字）", function() {
+                            $('#highdata').focus();
+                        });
+                    },0)
+                }
+            }
+                break;
+            case "lowdata":{
+                if(isNaN($('#lowdata').val()) || $('#lowdata').val().length>6 ){
+                    setTimeout(function () {
+                        $.alert("请填写合适且正确的低密度脂蛋白（数字）", function() {
+                            $('#lowdata').focus();
+                        });
+                    },0)
+                }
+            }
+                break;
+        }
+    }
+
+    $(function() {
+        $('header').on('click', '.top-left', function() {
+            window.history.back();
+        });
+    });
+</script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script type="text/javascript" src="../js/pages/biochemicalExam.js"></script>
+
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <title>佳医比邻</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/api.css" /> -->
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <div class="header">
+                <div class="top-left">
+                    <img src="../image/return1.png" alt="" />
+                </div>
+                <p class="title">消息通知</p>
+            </div>
+        </header>
+        <section class="content-container">
+            <div class="weui-panel notification-detail">
+                <div class="headline">
+                    <p class="headline-text">消息提醒</p>
+                    <p class="date-time" name="detail-time">
+                    </p>
+                </div>
+                <div class="content" id="contentList">
+                    <!-- <div class="content-item">
+                        <p class="title">
+                            标题：<span name="detail-title">饮食</span>
+                        </p>
+                        <p class="target text-default">
+                            目标：<span name="detail-target">1000步</span>
+                        </p>
+                        <p class="remark">
+                            备注：<span name="detail-remark">注意饮食</span>
+                        </p>
+                        <p class="circle">
+                            周期：<span name="detail-circle">1个月</span>
+                        </p>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+<!-- <script type="text/javascript" src="../script/plugins/apicloud/api.js"></script> -->
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<!-- <script type="text/javascript" src="../js/plugins/weui/weui.min.js"></script> -->
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        FastClick.attach(document.body);
+    });
+
+    $(function() {
+        $('header').on('click', '.top-left', function() {
+            window.history.back();
+        });
+    });
+</script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script type="text/javascript" src="../js/pages/notification_detail.js"></script>
+
+</html>

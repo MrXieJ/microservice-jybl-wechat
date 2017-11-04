@@ -51,7 +51,7 @@
     -ms-flex-pack: center;
     justify-content: center;
 }
-.flex-justify-start{/*子元素水平居左 */
+.flex-justify-start{
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;
 	-ms-flex-pack: start;

@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <title>佳医比邻</title>
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <link rel="stylesheet" type="text/css" href="../css/msg-detail.css" />
+
+</head>
+
+<body>
+<header>
+    <div class="header">
+        <div class="top-left">
+            <img src="../image/return1.png" alt="" />
+        </div>
+        <p class="title">留言板</p>
+    </div>
+</header>
+
+<div class="container">
+
+    <!--<div class="weui-flex title-area">-->
+        <!--<div class="weui-flex__item weui-flex">-->
+            <!--<div class="patient-name">李莉</div>-->
+            <!--<div class="patient-sex-age"> 女，46岁</div>-->
+        <!--</div>-->
+        <!--<div class="msg-time">2017-08-19 12:22</div>-->
+    <!--</div>-->
+
+    <!--<div class="weui-flex text-area">-->
+        <!--<div>描述:</div><div class="weui-flex__item description">头痛胸闷，呼吸困难</div>-->
+    <!--</div>-->
+
+    <!--<div class="weui-flex img-area">-->
+        <!--<div class="title">病情详细资料:</div>-->
+        <!--<div id="img_container" class="weui-flex img-container">-->
+            <!--<div class="weui-uploader__file"><img src="../image/touxiang-3x.png"></div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+
+    <!--<div class="weui-flex title-area">医生回复</div>-->
+
+    <!--<div class="reply-area">-->
+        <!--<div class="weui-flex reply-info">-->
+            <!--<div class="doc-avatar"><img src="../image/touxiang-3x.png"></div>-->
+            <!--<div class="weui-flex text-container">-->
+                <!--<div class="doc-name">谢医生</div>-->
+                <!--<div class="reply-time">2017-08-19 12:22</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="reply-content">一分钟呼吸多少次？心率多少？</div>-->
+    <!--</div>-->
+
+
+</div>
+
+<div class="btn-area">
+    <button class="weui-btn btn">回复</button>
+</div>
+
+</body>
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script type="text/javascript" src="../js/weui.js"></script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script>
+
+    $('header').on('click', '.top-left', function() {
+        window.history.back();
+    });
+
+</script>
+<script type="text/javascript" src="../js/pages/msgDetail.js"></script>
+</html>

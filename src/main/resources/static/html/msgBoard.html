@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <title>佳医比邻</title>
+    <!-- WEIXIN UI CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
+    <!-- CUSTOM DEFINE CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
+    <link rel="stylesheet" type="text/css" href="../css/msg-board.css" />
+
+
+    <style>
+
+        .panel-default:before,
+        .panel-default:after {
+            content: none;
+        }
+
+        .uploader-box {
+            float: left;
+        }
+
+    </style>
+
+</head>
+
+<body>
+<header>
+    <div class="header">
+        <div class="top-left">
+            <img src="../image/return1.png" alt="" />
+        </div>
+        <p class="title">留言板</p>
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="patient-info">就诊人: 未显示</div>
+
+    <div class="text-area">
+        <div class="text-title">描述</div>
+        <textarea id="text_area" value="" rows="4" placeholder="请详细描述您的问题，以便医生能够快速地了解您的情况"></textarea>
+    </div>
+
+    <div class="weui-cells_form" id="uploaderCustom">
+        <div class="weui-uploader upload-area">
+            <div class="upload-title">上传病情详细资料</div>
+            <!--<div class="weui-uploader__bd">-->
+                <!--<ul class="weui-uploader__files" id="uploaderCustomFiles"></ul>-->
+                <!--<div class="weui-uploader__input-box weui-flex uploader__input-box">-->
+                    <!--<input id="uploaderInput" class="weui-uploader__input" type="file" multiple="" >-->
+                    <!--<div><img src="../image/photocamera.png" alt="" /></div>-->
+                    <!--<p>上传</p>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="weui-panel panel-default">
+                <div class="weui-uploader__input-box uploader-box">
+                    <input id="uploaderInput" class="weui-uploader__input" type="file" multiple="" onchange="hasSelectedImg();">
+                    <div><img src="../image/photocamera.png" alt="" /></div>
+                    <p>上传</p>
+                </div>
+                <div class="weui-uploader__input-box uploader-box" id="previewDiv" style="display:none;">
+                    <img id="previewImg" style="width:100%; height:100%; object-fit: cover;" src=""/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="btn-area">
+    <button class="weui-btn submit-btn">提交</button>
+</div>
+
+</body>
+<script type="text/javascript" src="../js/plugins/fastclick/fastclick.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script type="text/javascript" src="../js/pages/msgBoard.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
+<script src="http://gosspublic.alicdn.com/aliyun-oss-sdk-4.4.4.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/swiper.min.js"></script>
+<script type="text/javascript">
+
+    var pbt;
+
+    function hasSelectedImg() {
+
+        var $file = $('#uploaderInput');
+        var fileObj = $file[0];
+
+        var windowURL = window.URL || window.webkitURL;
+        var dataURL;
+        var img = $("#previewImg");
+
+        if (fileObj && fileObj.files && fileObj.files[0]) {
+
+            dataURL = windowURL.createObjectURL(fileObj.files[0]);
+            img.attr('src', dataURL);
+            $('#previewDiv').css('display', 'block');
+
+            var pb = $.photoBrowser({
+                items: [
+                    dataURL
+                ],
+                onClose: function(){
+                }
+            });
+            pbt = pb;
+
+        }
+
+    }
+
+    $('#previewDiv').on('click', function(){
+        pbt.open();
+    })
+
+</script>
+</html>
