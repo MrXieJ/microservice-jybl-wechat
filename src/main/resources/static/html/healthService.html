@@ -13,6 +13,11 @@
     <link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
     <style type="text/css">
 
+        .nomessage{
+            text-align: center;
+            color:#a6a6a6;
+            padding: 20px;
+        }
     </style>
 </head>
 
@@ -86,26 +91,9 @@
                     <p class="">我咨询的医生</p>
                 </div>
                 <div class="weui-panel__bd">
-                    <!--<div class="weui-cell weui-cell_swiped">-->
-                        <!--<a class="weui-cell__bd chat-wrapper" ontouchstart="return touchstartF(event,this);" ontouchmove="return touchmoveF(event,this);">-->
-                            <!--<div class="chat-box-head">-->
-                                <!--<img class="chat-head-img" src="../image/touxiang2.png" alt="" />-->
-                                <!--<span class="red-dot"></span>-->
-                            <!--</div>-->
-                            <!--<div class="chat-box-tail">-->
-                                <!--<div class="flex-r flex-align-center flex-justify-between">-->
-                                    <!--<p class="chat-person-name">Dr.Wu</p>-->
-                                    <!--<p class="chat-latest-time">2017-08-24 16:40:23</p>-->
-                                <!--</div>-->
-                                <!--<div class="chat-message">-->
-                                    <!--你好,最近身体状况如何?你好,最近身体状况如何?你好,最近身体状况如何?你好,最近身体状况如何?-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</a>-->
-                        <!--<div class="weui-cell__ft" onclick="return toDelete(event,this);">-->
-                            <!--<a class="weui-swiped-btn weui-swiped-btn_warn" href="javascript:">删除</a>-->
-                        <!--</div>-->
-                    <!--</div>-->
+
+
+
                     <!--<div class="weui-cell weui-cell_swiped">-->
                         <!--<a class="chat-wrapper" ontouchstart="return touchstartF(event,this);" ontouchmove="return touchmoveF(event,this);">-->
                             <!--<div class="chat-box-head">-->
@@ -137,18 +125,45 @@
 <!-- <script type="text/javascript" src="../js/plugins/weui/weui.min.js"></script> -->
 <script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
 <script type="text/javascript" src="../js/plugins/swiper/swiper.min.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery-cookie/jquery.cookie.js"></script>
 <script>
     $(function() {
         FastClick.attach(document.body);
     });
 
-</script>
-<script>
+//    var strcookie = document.cookie;
+//    console.log(strcookie);
+//    var arrcookie = strcookie.split("=");
+//    var statuscookie = arrcookie[1];
+//    if(statuscookie == "" || statuscookie == "0"){
+//        //retset flag
+//        document.cookie="statuscookie=1";
+//    }else{
+//        window.location.reload();
+//        document.cookie="statuscookie=0";
+//    }
+    //刷新页面
+//    if( !checkCookie("healthServiceCookie") || getCookie("healthServiceCookie")==1 ) {
+//        setCookie("healthServiceCookie",0,1);
+//    }else {
+//        window.location.reload();
+//        setCookie("healthServiceCookie",1,1);
+//    }
+
+
+    var click = false;
     function touchstartF(event) {
+        click = true;
         x = event.changedTouches[0].pageX;
         y = event.changedTouches[0].pageY;
         swipeX = true;
         swipeY = true;
+    };
+
+    function touchendF(event,e,id) {
+        if(click==true){
+            intoMsgDetail(id);
+        }
     };
 
     function touchmoveF(event, e) {
@@ -158,25 +173,32 @@
         if (swipeX && Math.abs(X - x) - Math.abs(Y - y) > 0) {
             // 阻止事件冒泡
             event.stopPropagation();
+            click = false;
+
             if (X - x > 10) {
                 event.preventDefault();
                 e.style.WebkitTransform = "translateX(" + 0 + "px)";
                 e.style.transition = "-webkit-transform 300ms ease-in-out";
-            }
-            if (x - X > 10) {
+
+            }else if (x - X > 10) {
                 event.preventDefault();
                 e.style.WebkitTransform = "translateX(" + -75 + "px)";
                 e.style.transition = "-webkit-transform 300ms ease-in-out";
             }
             swipeY = false;
+
         }
         // 上下滑动
         if (swipeY && Math.abs(X - x) - Math.abs(Y - y) < 0) {
             swipeX = false;
+            click = false;
         }
     };
 
-    function toDelete(event, e) {
+
+
+
+    function toDelete(event, e, id) {
         // var deleteLB = document.querySelectorAll('.delete');
         var wrapper = document.querySelectorAll('.wrapper');
         for (var i = 0; i < wrapper.length; i++) {
@@ -194,6 +216,34 @@
                 down.remove();
             }, 100);
         }
+
+        $.ajax({
+            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/messageboard/patientdelete',
+            type: 'POST',
+            timeout: 5000,
+            data: {
+                id:id
+            },
+            success: function(result, status, xhr) {
+                var data = result.errCode;
+                if(data==1 || data==10001){
+                    $.alert({
+                        title: '提示',
+                        text: '删除留言板失败',
+                        onOK: function () {
+                            window.location.reload();
+                        }
+                    });
+                }
+
+
+            },
+            error: function(xhr, status, error) {
+                $.alert("请检查网络是否通畅",function () {
+                })
+            },
+        });
+
     }
     //点进留言板
     function intoMsgDetail(obj) {

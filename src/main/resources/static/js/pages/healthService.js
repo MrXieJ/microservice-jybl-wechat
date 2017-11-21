@@ -6,6 +6,14 @@ $(function() {
     setItem('wechat_id', wechat_id);
     setItem('headimg', headimg);
 
+    //页面是否需要刷新
+    var healthService = getItem("healthService");
+    if(healthService){
+        removeItem("healthService");
+        location.reload();
+    }
+     getUnreadMessage();
+    // getMessageBoard();
     //判断是否填写个人信息
     $.ajax({
         url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/get',
@@ -37,7 +45,7 @@ $(function() {
                     });
                 }
             }else{
-            $('.circle').attr("src",result.data.head_pic);
+            $('.circle').attr("src",getUrlParam("headimg"));
             }
         },
         error: function(xhr, status, error) {
@@ -72,9 +80,11 @@ $(function() {
     });
 
 
-    // 获取未读消息的数量
+function getUnreadMessage() {
+    var num=0;
+    //获取未读医生群发消息数量
     $.ajax({
-        url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/messageremind/unread/getnumber',
+        url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/groupreceiving/unread',
         type: 'GET',
         timeout: 5000,
         data: {
@@ -84,22 +94,54 @@ $(function() {
             $.showLoading();
         },
         success: function(result, status, xhr) {
-                var data = result.data;
-                if (data > 0) {
-                    $('.number-red-dot').html(data).removeClass('unvisible');
-                } else {
-                    $('.number-red-dot').addClass('unvisible');
+            var data = result.data;
+            if (data > 0) {
+               num+=data;
+            }
+            //获取未读消息数量
+            $.ajax({
+                url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/messageremind/unread/getnumber',
+                type: 'GET',
+                timeout: 5000,
+                data: {
+                    wechat_id: wechat_id
+                },
+                beforeSend: function() {
+                    $.showLoading();
+                },
+                success: function(result, status, xhr) {
+                    var data = result.data;
+                    if (data > 0) {
+                        num+=data;
+                    }
+                    if (num > 0) {
+                        $('.number-red-dot').html(num).removeClass('unvisible');
+                    } else {
+                        $('.number-red-dot').addClass('unvisible');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    $.alert("请检查网络是否通畅",function () {
+                    })
+                },
+                complete: function(status, xhr) {
+
+                    $.hideLoading();
                 }
+            });
+
         },
         error: function(xhr, status, error) {
-          $.alert("请检查网络是否通畅",function () {
-          })
+            $.alert("请检查网络是否通畅",function () {
+            })
         },
         complete: function(status, xhr) {
 
             $.hideLoading();
         }
     });
+}
+
 
     //获取医生回复
     $.ajax({
@@ -131,6 +173,42 @@ $(function() {
     });
 
     //获取最新留言板和回复
+    function getMessageBoard() {
+        $.ajax({
+            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/messageboard/getnewestmessagwe',
+            type: 'GET',
+            timeout: 5000,
+            data: {
+                wechat_id: wechat_id
+            },
+            beforeSend: function() {
+                $.showLoading();
+            },
+            success: function(result, status, xhr) {
+                var da = result.data;
+
+                if (da && da.length > 0) {
+                    $.each(da, function(index, messageBoard) {
+                        addMessageBoard(messageBoard);
+                    });
+                } else{
+                    var str = '<div class="weui-cell weui-cell_swiped nomessage">\n' +
+                        '还没有任何留言\n' +
+                        '</div>';
+                    $('.weui-panel__bd').append(str);
+                }
+
+            },
+            error: function(xhr, status, error) {
+                $.alert("请检查网络是否通畅",function () {
+                })
+            },
+            complete: function(status, xhr) {
+
+                $.hideLoading();
+            }
+        });
+    }
     $.ajax({
         url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/messageboard/getnewestmessagwe',
         type: 'GET',
@@ -148,6 +226,11 @@ $(function() {
                 $.each(da, function(index, messageBoard) {
                     addMessageBoard(messageBoard);
                 });
+            } else{
+                var str = '<div class="weui-cell weui-cell_swiped nomessage">\n' +
+                    '还没有任何留言\n' +
+                    '</div>';
+                $('.weui-panel__bd').append(str);
             }
 
         },
@@ -165,15 +248,15 @@ $(function() {
         if(!messageboard){
             return;
         }
-        var str =  '<div class="weui-cell weui-cell_swiped" onclick="intoMsgDetail('+messageboard.id+');" id="'+messageboard.id+'">'+
-            '<a class="weui-cell__bd chat-wrapper" ontouchstart="return touchstartF(event,this);" ontouchmove="return touchmoveF(event,this);">'+
+        var str =  '<div class="weui-cell weui-cell_swiped"  id="'+messageboard.id+'">'+
+            '<a class="weui-cell__bd chat-wrapper" ontouchstart="return touchstartF(event,this);"  ontouchmove="return touchmoveF(event,this);" ontouchend="return touchendF(event,this,'+messageboard.id+');"  >'+
             '<div class="chat-box-head">'+
             '<img class="chat-head-img" style="border-radius: 50%" src="'+messageboard.head_pic+'" alt="" />';
         if(messageboard.sender==1 && messageboard.isread==0){
             str+= '<span class="red-dot"></span>';
         }
            str+= '</div>'+
-            '<div class="chat-box-tail">'+
+            '<div class="chat-box-tail"  >'+
             '<div class="flex-r flex-align-center flex-justify-between">'+
             '<p class="chat-person-name" style="font-size: 18px">'+messageboard.name+'</p>'+
             '<p class="chat-latest-time">'+messageboard.datetime.split(".")[0]+'</p>'+
@@ -183,7 +266,7 @@ $(function() {
     '</div>'+
         '</div>'+
         '</a>'+
-        '<div class="weui-cell__ft" onclick="return toDelete(event,this);">'+
+        '<div class="weui-cell__ft" onclick="return toDelete(event,this,'+messageboard.id+');">'+
             '<a class="weui-swiped-btn weui-swiped-btn_warn" href="javascript:">删除</a>'+
             '</div>'+
             '</div>';

@@ -80,13 +80,13 @@ $(function() {
                 var timearray =  strTime.split('-');
                 var now= new Date(timearray[0], timearray[1]-1, timearray[2]);
                 time += now.Format("yyyy-MM-dd") + ' 至 ';
-                now.setMonth(now.getMonth() + duration);
-                time += now.Format("yyyy-MM-dd");
+                var expireDay = new Date(now.getTime()+duration*24*60*60*1000);
+                time += expireDay.Format("yyyy-MM-dd");
                 service.time = time;
                 addOrderService('allOrderServices', service);
-                if (remain > 0) {
+                if (service.indent_status== 1) {
                     addOrderService('inUseOrderService', service);
-                } else {
+                } else if(service.indent_status== 99 || service.indent_status== 2){
                     addOrderService('completedOrderdService', service);
                 }
             });

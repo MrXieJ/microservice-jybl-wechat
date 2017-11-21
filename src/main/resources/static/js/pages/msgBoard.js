@@ -1,7 +1,21 @@
+
+// var strcookie = document.cookie;
+// console.log(strcookie);
+// var arrcookie = strcookie.split("=");
+// var statuscookie = arrcookie[1];
+// if(statuscookie == "" || statuscookie == "0"){
+//     //retset flag
+//     document.cookie="statuscookie1=1";
+// }else{
+//     window.location.reload();
+//     document.cookie="statuscookie1=0";
+// }
+
 $(function () {
 var  wechat_id = getItem('wechat_id');
 var phone=getItem("phone");
     getPatientInfo();
+
 
 //获取患者信息
 function getPatientInfo() {
@@ -59,51 +73,95 @@ function getPatientInfo() {
 $('.submit-btn').on('click', function(){
 
     var file = $('#uploaderInput')[0].files[0];
+ console.log(file);
+    if(file!=undefined){
+        var ext = /\.[^\.]+/.exec($('#uploaderInput').val());
 
-    var ext = /\.[^\.]+/.exec($('#uploaderInput').val());
+        var storeAs = 'messageboard/' + new Date().getTime() + ext;
 
-    var storeAs = 'messageboard/' + new Date().getTime() + ext;
+        OSS.urllib.request("http://125.216.243.114:2004/requestSTS",
+            {method: 'GET'},
+            function (err, response) {
+                if (err) {
+                    return alert("上传失败");
+                }
 
-    OSS.urllib.request("http://125.216.243.114:2004/requestSTS",
-        {method: 'GET'},
-        function (err, response) {
-            if (err) {
-                return alert("上传失败");
+                try {
+                    result = JSON.parse(response);
+                    var client = new OSS.Wrapper({
+                        accessKeyId: result.AccessKeyId,
+                        accessKeySecret: result.AccessKeySecret,
+                        stsToken: result.SecurityToken,
+                        endpoint: 'oss-cn-shenzhen.aliyuncs.com',
+                        bucket: 'jybl-photo'
+                    });
+                } catch (e) {
+                    $.hideLoading();
+                    $.alert({
+                        title: '提示',
+                        text: '上传图片出现异常',
+                        onOK: function () {
+                            window.history.back();
+                        }
+                    });
+                }
+                client.multipartUpload(storeAs, file).then(function (result) {
+                    var picture = result.res.requestUrls[0].split('?')[0];
+                    saveMessageBoard(picture, client, storeAs);
+                }).catch(function (err) {
+                    $.hideLoading();
+                    $.alert({
+                        title: '提示',
+                        text: '上传数据出现异常',
+                        onOK: function () {
+                            window.history.back();
+                        }
+                    });
+                });
+            })
+    }else{
+
+            var da = {
+                "wechat_id":wechat_id,
+                "phone":phone,
+                "sender":0,
+                "content":$('#text_area').val()
             }
 
-            try {
-                result = JSON.parse(response);
-                var client = new OSS.Wrapper({
-                    accessKeyId: result.AccessKeyId,
-                    accessKeySecret: result.AccessKeySecret,
-                    stsToken: result.SecurityToken,
-                    endpoint: 'oss-cn-shenzhen.aliyuncs.com',
-                    bucket: 'sunmen-oss'
-                });
-            } catch (e) {
-                $.hideLoading();
-                $.alert({
-                    title: '提示',
-                    text: '上传图片出现异常',
-                    onOK: function () {
-                        window.history.back();
+            $.ajax({
+                url:'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/messageboard/set',
+                type: 'POST',
+                timeout: 5000,
+                contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify(da),
+                beforeSend: function() {
+                    $.showLoading();
+                },
+                success: function(result, status, xhr) {
+                    if (!result || result.errorcode != '0') {
+                        $.alert('留言失败');
+                    }else{
+                        $.hideLoading();
+                        $.alert({
+                            title: '提示',
+                            text: '留言成功',
+                            onOK: function () {
+                                window.history.back();
+                            }
+                        });
+
                     }
-                });
-            }
-            client.multipartUpload(storeAs, file).then(function (result) {
-                var picture = result.res.requestUrls[0].split('?')[0];
-                saveMessageBoard(picture, client, storeAs);
-            }).catch(function (err) {
-                $.hideLoading();
-                $.alert({
-                    title: '提示',
-                    text: '上传数据出现异常',
-                    onOK: function () {
-                        window.history.back();
-                    }
-                });
+                },
+                error: function(xhr, status, error) {
+                    $.alert('网络不通畅');
+                },
+                complete: function(xhr, status) {
+                    $.hideLoading();
+                }
             });
-        })
+
+    }
+
 
 });
 
@@ -154,7 +212,7 @@ function saveMessageBoard(picture, client, storeAs) {
 }
 
 $('header').on('click', '.top-left', function() {
-    window.history.back();
+    window.location.href=document.referrer;
 });
 
 // 缩略图预览

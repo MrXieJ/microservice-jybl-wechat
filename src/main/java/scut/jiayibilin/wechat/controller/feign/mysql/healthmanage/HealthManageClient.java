@@ -97,7 +97,7 @@ public interface HealthManageClient {
     * 调用远程服务下的将具体消息设置为已读接口
     * */
     @RequestMapping(value="/healthmanage/message/setread" ,method= RequestMethod.POST)
-    String SetMessageRead(@RequestParam("wechat_id") String wechat_id,@RequestParam("message_id") int message_id);
+    String SetMessageRead(@RequestParam("id") int id);
 
     /*
     * 调用远程服务下的查看患者是否有血压心率记录接口
@@ -116,5 +116,5 @@ public interface HealthManageClient {
     * 根据消息id获取消息内容
     * */
     @RequestMapping(value="/healthmanage/message/getbyid" ,method= RequestMethod.GET)
-    MessageRemindEntity MessageGetbyid(@RequestParam("message_id") int message_id);
+    MessageRemindEntity MessageGetById(@RequestParam("id") int id);
 }

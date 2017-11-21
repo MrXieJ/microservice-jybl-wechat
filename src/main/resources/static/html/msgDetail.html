@@ -7,6 +7,7 @@
     <title>佳医比邻</title>
     <!-- WEIXIN UI CSS -->
     <link rel="stylesheet" type="text/css" href="../css/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.css" />
     <!-- CUSTOM DEFINE CSS -->
     <link rel="stylesheet" type="text/css" href="../css/doctor-near.css" />
     <link rel="stylesheet" type="text/css" href="../css/msg-detail.css" />
@@ -72,11 +73,27 @@
 <script type="text/javascript" src="../js/plugins/jquery-weui/jquery-weui.min.js"></script>
 <script type="text/javascript" src="../js/weui.js"></script>
 <script type="text/javascript" src="../js/tools.js"></script>
+<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/swiper.min.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery-cookie/jquery.cookie.js"></script>
 <script>
 
     $('header').on('click', '.top-left', function() {
         window.history.back();
+        //window.location.href="healthService.html?wechat_id="+getItem("wechat_id")+"&headimg="+getItem("headimg");
+       // window.location.href=document.referrer;
     });
+
+    //点开大图
+    function bigPicture(pbt){
+        var pb = $.photoBrowser({
+            items: [
+                pbt
+            ],
+            onClose: function(){
+            }
+        });
+        pb.open();
+    }
 
 </script>
 <script type="text/javascript" src="../js/pages/msgDetail.js"></script>

@@ -12,6 +12,7 @@ package scut.jiayibilin.wechat.entity;
 alter table message_list add index index_wechat_id (wechat_id);
  */
 public class MessageListEntity {
+    private int id;
     private String wechat_id;//患者微信号
     private int message_id;//消息id
     private int isread;//是否已读
@@ -22,6 +23,14 @@ public class MessageListEntity {
     private int period;//周期(天)
 
     public MessageListEntity() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {

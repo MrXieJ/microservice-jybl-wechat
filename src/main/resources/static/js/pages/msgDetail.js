@@ -1,6 +1,24 @@
+// if( !checkCookie("msgDetailCookie") || getCookie("msgDetailCookie")==1 ) {
+//     setCookie("msgDetailCookie",0,1);
+// }else {
+//     window.location.reload();
+//     setCookie("msgDetailCookie",1,1);
+// }
+
+
+var pbt;
+
 $(function () {
     var id = getUrlParam("id");
+    setItem("message_id",id);
+    setItem("healthService",true);
 
+    //页面是否需要刷新
+    var mesDetail = getItem("mesDetail");
+    if(mesDetail){
+        removeItem("mesDetail");
+        location.reload();
+    }
     //获取一个留言板及其回复
     $.ajax({
         url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/messageboard/getone',
@@ -37,6 +55,7 @@ $(function () {
     //添加留言第一个信息
     function addMessageBoard(messageBoard) {
         setItem("reply_id",messageBoard.id);
+        setItem("phone",messageBoard.phone);
         var str = ' <div class="weui-flex title-area">'+
             '<div class="weui-flex__item weui-flex">'+
             '<div class="patient-name">'+messageBoard.name+'</div>'+
@@ -46,15 +65,25 @@ $(function () {
         '</div>'+
         '<div class="weui-flex text-area">'+
             '<div>描述:</div><div class="weui-flex__item description">'+messageBoard.content+'</div>'+
-        '</div>'+
-        '<div class="weui-flex img-area">'+
-            '<div class="title">病情详细资料:</div>'+
-        '<div id="img_container" class="weui-flex img-container">'+
-            '<div class="weui-uploader__file"><img src="'+messageBoard.picture+'"></div>'+
+        '</div>';
+
+        if(messageBoard.picture!=null && messageBoard.picture!="") {
+           pbt=messageBoard.picture;
+           str+='<div class="weui-flex img-area">'+
+               '<div class="title">病情详细资料:</div>'+
+               '<div id="img_container" class="weui-flex img-container">'+
+               '<div class="weui-uploader__file"><img onclick="bigPicture(pbt);" src="' + messageBoard.picture + '"></div>' +
             '</div>'+
-            '</div>';
+                '</div>';
+
+        }
+
         $('.container').append(str);
     }
+
+
+
+
 
     //添加留言板回复信息
     function addMessageBoardReply(messageBoard) {

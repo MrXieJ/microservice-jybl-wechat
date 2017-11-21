@@ -89,7 +89,7 @@
 
 
     $('header').on('click', '.top-left', function() {
-        window.history.back();
+        window.location.href=document.referrer;
     });
     //上传留言回复信息
     function saveMessageBoardReply() {
@@ -121,6 +121,7 @@
                         title: '提示',
                         text: '回复成功',
                         onOK: function () {
+                            setItem("mesDetail",true);
                             window.history.back();
                         }
                     });

@@ -72,7 +72,16 @@
 
     $(function() {
         $('header').on('click', '.top-left', function() {
-            window.history.back();
+//            window.history.back();
+//            window.location.href="myDoctor.html";
+            var url = document.referrer;
+            url=url.split("/");
+            url=url[url.length-1].split("?");
+            if(url[0]=="myDoctor_order.html"){
+            window.history.go(-2);
+            }else {
+                window.history.go(-1);
+            }
         });
     });
 </script>

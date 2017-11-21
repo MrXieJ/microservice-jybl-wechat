@@ -56,6 +56,11 @@ public interface PatientClient {
     String buyservice(@RequestParam("wechat_id") String wechat_id, @RequestParam("servicelist") List<Integer> servicelist,@RequestParam("phone")String phone);
 
     /*
+    *调用远程接口下更新过期服务包接口,定时进行
+     */
+    @RequestMapping(value = "/patient/service/expired" ,method = RequestMethod.POST)
+    String updatePurchasedServiceExpired();
+    /*
     * 调用远程服务下的重复购买服务接口
     * */
     @RequestMapping(value="/patient/buyserviceagain",method = RequestMethod.POST)
@@ -96,18 +101,47 @@ public interface PatientClient {
     /*
     *调用远程服务下的获取留言板最新回复的接口
      */
-    @RequestMapping(value = "/patient/messageboard/getnewestmessage", method = RequestMethod.GET)
+    @RequestMapping(value = "/patient/messageboard/getpatientnewestmessage", method = RequestMethod.GET)
     List<MessageBoardEntity> getNewestMessageBoardList(@RequestParam("wechat_id") String wechat_id);
 
-    /*
-    *调用远程服务下的回复留言
-     */
-    @RequestMapping(value = "/patient/messageboard/reply",method = RequestMethod.POST)
-    String setMessageReply(MessageReplyEntity messageReplyEntity);
 
     /*
     *调用远程服务下的获取一个留言板及其回复
      */
     @RequestMapping(value = "/patient/messageboard/getonemessage" ,method = RequestMethod.GET)
-    List<MessageBoardEntity> getOneMessageAndReply(@RequestParam("id") int id);
+    List<MessageBoardEntity> getOneMessageAndReply(@RequestParam("id") int id,@RequestParam("who") int who);
+
+    /*
+    *调用远程接口下的删除留言板接口
+     */
+    @RequestMapping(value = "/patient/messageboard/delete",method = RequestMethod.POST)
+    String deletePatientMessageBoard(@RequestParam("id")int id,@RequestParam("who") int who);
+
+    /*
+    *调用远程接口下的获取患者未读医生群发消息数量
+     */
+    @RequestMapping(value = "/patient/groupreceiving/unread")
+     int getGroupReceivingUnread(@RequestParam("wechat_id")String wechat_id);
+
+    /*
+    *调用远程接口下的获取患者的医生群发消息
+     */
+    @RequestMapping(value = "/patient/groupreceiving/list")
+    List<PatientGroupReceivingEntity> getPatientGroupReceiving(@RequestParam("wechat_id")String wechat_id);
+
+    /*
+    *调用远程接口下的删除患者的医生群发消息
+     */
+    @RequestMapping(value = "/patient/groupreceiving/delete",method = RequestMethod.POST)
+    String deleteGroupReceiving(@RequestParam("id") int id);
+    /*
+   *调用远程接口下的设置患者的医生群发消息为已读
+    */
+    @RequestMapping(value = "/patient/groupreceiving/setread",method = RequestMethod.POST)
+    String setGroupReceivingRead(@RequestParam("id") int id);
+    /*
+   *调用远程接口下的获取患者的一个医生群发消息的详细信息
+    */
+    @RequestMapping(value = "/patient/groupreceiving/get",method = RequestMethod.GET)
+    PatientGroupReceivingEntity getGroupReceiving(@RequestParam("id") int id);
 }

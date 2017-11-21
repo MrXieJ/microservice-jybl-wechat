@@ -192,17 +192,23 @@ $(function() {
 
             if(maxHigh>=140){
                 $('.maxHighBP').removeClass('btn-default-danger').removeClass('btn-default-success');
-                $('.maxHighBP').html('较高').addClass('btn-default-danger');
+                $('.maxHighBP').html('高').addClass('btn-default-danger');
+            }else if(maxHigh>=120) {
+                $('.maxHighBP').removeClass('btn-default-danger').removeClass('btn-default-success');
+                $('.maxHighBP').html('偏高').addClass('btn-default-warning');
             }else {
                 $('.maxHighBP').removeClass('btn-default-danger').removeClass('btn-default-success');
-                $('.maxHighBP').html('良好').addClass('btn-default-success');
+                $('.maxHighBP').html('正常').addClass('btn-default-success');
             }
             if(maxLow>=90){
                 $('.minLowBP').removeClass('btn-default-danger').removeClass('btn-default-success');
-                $('.minLowBP').html('较高').addClass('btn-default-danger');
-            }else {
+                $('.minLowBP').html('高').addClass('btn-default-danger');
+            }else if(maxLow>=80){
                 $('.minLowBP').removeClass('btn-default-danger').removeClass('btn-default-success');
-                $('.minLowBP').html('良好').addClass('btn-default-success');
+                $('.minLowBP').html('偏高').addClass('btn-default-warning');
+            }else{
+                $('.minLowBP').removeClass('btn-default-danger').removeClass('btn-default-success');
+                $('.minLowBP').html('正常').addClass('btn-default-success');
             }
             $('#normalBP').html(normalCount);
             $('#hidesideBP').html(highCount);

@@ -120,7 +120,7 @@ $(function() {
             '<div class="flex-r service-content">' +
             '<p>总次数: <span class="service-count">' + service.count + '</span>次</p>' +
             '<p>' +
-            '期限: <span class="service-duration">' + service.duration + '</span>个月' +
+            '期限: <span class="service-duration">' + service.duration + '</span>天' +
             '</p>' +
             '</div>' +
             '<div class="flex-r service-content">' +

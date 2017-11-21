@@ -371,11 +371,11 @@ public class HealthManageController {
             RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
             RequestMethod.HEAD, RequestMethod.PUT, RequestMethod.PATCH}, origins="*")
     @RequestMapping(value="/messageremind/setread",method = RequestMethod.POST)
-    public JsonResult SetMessage(@RequestParam("wechat_id") String wechat_id,@RequestParam("message_id") String message_id){
+    public JsonResult SetMessage(@RequestParam("id") int id){
         String result="error";
-        int message_id_int=Integer.valueOf(message_id);
+//        int message_id=Integer.valueOf(id);
         try{
-            result=healthManageClient.SetMessageRead(wechat_id,message_id_int);
+            result=healthManageClient.SetMessageRead(id);
         }catch(Exception e){
             jsonResult.setErrorcode("1");
             jsonResult.setMessage("there is an exception while setting message read . exception:"+e.getMessage());
@@ -498,10 +498,9 @@ public class HealthManageController {
             RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
             RequestMethod.HEAD, RequestMethod.PUT, RequestMethod.PATCH}, origins="*")
     @RequestMapping(value="/messageremind/getbyid",method = RequestMethod.GET)
-    public JsonResult GetMessagebyid(@RequestParam("message_id") String message_id){
+    public JsonResult GetMessagebyid(@RequestParam("id") int id){
         try{
-            int message_id_int=Integer.valueOf(message_id);
-            MessageRemindEntity result=healthManageClient.MessageGetbyid(message_id_int);
+            MessageRemindEntity result=healthManageClient.MessageGetById(id);
             jsonResult.setData(result);
             jsonResult.setMessage("get message by message_id success");
             jsonResult.setErrorcode("0");

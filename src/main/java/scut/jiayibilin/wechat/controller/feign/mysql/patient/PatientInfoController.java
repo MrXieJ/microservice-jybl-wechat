@@ -10,6 +10,7 @@ import scut.jiayibilin.wechat.entity.*;
 import scut.jiayibilin.wechat.service.MyWxMpService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -414,6 +415,9 @@ public class PatientInfoController {
     }
 
 
+
+
+
     /*
     *获取患者一个留言板及其回复
      */
@@ -423,7 +427,7 @@ public class PatientInfoController {
     @RequestMapping(value="/messageboard/getone",method = RequestMethod.GET)
     public JsonResult getOneMessageBoard(@RequestParam int id){
         try{
-            List<MessageBoardEntity> list=patientClient.getOneMessageAndReply(id);
+            List<MessageBoardEntity> list=patientClient.getOneMessageAndReply(id,0);
             jsonResult.setErrorcode("0");
             jsonResult.setMessage("get one messageboard and reply  success");
             jsonResult.setData(list);
@@ -437,44 +441,166 @@ public class PatientInfoController {
         return jsonResult;
     }
 
+       /*
+        *删除患者一个留言板及其回复
+         */
+    @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
+            RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
+            RequestMethod.HEAD, RequestMethod.PUT, RequestMethod.PATCH}, origins="*")
+    @RequestMapping(value="/messageboard/patientdelete",method = RequestMethod.POST)
+    public JsonResult deleteOneMessageBoard(@RequestParam int id){
+        try{
+            String result = patientClient.deletePatientMessageBoard(id ,0);
+            if(result.equals("success")) {
+                jsonResult.setErrorcode("0");
+                jsonResult.setMessage("delete one messageboard and reply  success");
+                jsonResult.setData(null);
+                this.logger.info("成功删除患者的一个留言板及其回复信息");
+        }else if(result.equals("error")) {
+                jsonResult.setErrorcode("1");
+                jsonResult.setMessage("delete message board error");
+                jsonResult.setData(null);
+            }
+        }catch(Exception e){
+            this.logger.error("删除留言板及其回复时发生异常"+e.getMessage());
+            jsonResult.setErrorcode("10001");
+            jsonResult.setMessage("there is an exception while  deleting one message board.and reply exception:"+e.getMessage());
+            jsonResult.setData(null);
+        }
+        return jsonResult;
+    }
 
     /*
-    *设置留言回复
-     */
-//    @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
-//            RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
-//            RequestMethod.HEAD, RequestMethod.PUT, RequestMethod.PATCH}, origins="*")
-//    @RequestMapping(value="/messageboard/setreply",method = RequestMethod.POST)
-//    public JsonResult setMessageReply(@RequestBody MessageReplyEntity messageReplyEntity){
-//        try {
-//            String result = patientClient.setMessageReply(messageReplyEntity);
-//            this.logger.info(result);
-//            if (result.equals("success")) {
-//                jsonResult.setErrorcode("0");
-//                jsonResult.setMessage("set message board reply success");
-//                jsonResult.setData(null);
-//            } else if (result.equals("error")) {
-//                jsonResult.setErrorcode("1");
-//                jsonResult.setMessage("set message board reply error");
-//                jsonResult.setData(null);
-//            }
-//        }catch(Exception e){
-//                this.logger.error("建议时发生异常"+e.getMessage());
-//                jsonResult.setErrorcode("10001");
-//                jsonResult.setMessage("there is an exception while suggesting . exception:"+e.getMessage());
-//                jsonResult.setData(null);
-//            }
-//        return jsonResult;
-//    }
+       *获取患者未读医生群发消息数量
+        */
+    @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
+            RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
+            RequestMethod.HEAD, RequestMethod.PUT, RequestMethod.PATCH}, origins="*")
+    @RequestMapping(value="/groupreceiving/unread",method = RequestMethod.GET)
+    public JsonResult getGroupReceivingUnread(@RequestParam String wechat_id){
+        try{
+            int num = patientClient.getGroupReceivingUnread(wechat_id);
+                jsonResult.setErrorcode("0");
+                jsonResult.setMessage("get doctor group message unread number success");
+                jsonResult.setData(new Integer(num));
+                this.logger.info("成功获取患者未读医生群发消息个数");
+        }catch(Exception e){
+            this.logger.error("获取患者未读医生群发消息个数时发生异常"+e.getMessage());
+            jsonResult.setErrorcode("10001");
+            jsonResult.setMessage("there is an exception while  getting doctor group message unread number:"+e.getMessage());
+            jsonResult.setData(null);
+        }
+        return jsonResult;
+    }
+
 
     /*
-    *获取医生回复
+       *获取患者未读医生群发消息列表
+        */
+    @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
+            RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
+            RequestMethod.HEAD, RequestMethod.PUT, RequestMethod.PATCH}, origins="*")
+    @RequestMapping(value="/groupreceiving/list",method = RequestMethod.GET)
+    public JsonResult getPatientGroupReceiving(@RequestParam String wechat_id){
+        try{
+            List<PatientGroupReceivingEntity> patientGroupReceivingEntityList = patientClient.getPatientGroupReceiving(wechat_id);
+            jsonResult.setErrorcode("0");
+            jsonResult.setMessage("get doctor group message list success");
+            jsonResult.setData(patientGroupReceivingEntityList);
+            this.logger.info("成功获取患者的医生群发消息列表");
+        }catch(Exception e){
+            this.logger.error("获取患者的医生群发消息列表时发生异常"+e.getMessage());
+            jsonResult.setErrorcode("10001");
+            jsonResult.setMessage("there is an exception while  getting doctor group message list:"+e.getMessage());
+            jsonResult.setData(null);
+        }
+        return jsonResult;
+    }
+
+
+    /*
+      *删除患者未读医生群发消息
+       */
+    @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
+            RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
+            RequestMethod.HEAD, RequestMethod.PUT, RequestMethod.PATCH}, origins="*")
+    @RequestMapping(value="/groupreceiving/delete",method = RequestMethod.POST)
+    public JsonResult deletePatientGroupReceiving(@RequestParam int id){
+        try{
+            String result = patientClient.deleteGroupReceiving(id);
+            if(result.equals("success")){
+                jsonResult.setErrorcode("0");
+                jsonResult.setMessage("delete doctor group message  success");
+                jsonResult.setData(null);
+                this.logger.info("成功删除患者的医生群发消息");
+            }else if(result.equals("error")){
+                jsonResult.setErrorcode("1");
+                jsonResult.setMessage("delete doctor group message  error");
+                jsonResult.setData(null);
+                this.logger.info("删除患者的医生群发消息失败,数据库异常");
+            }
+
+        }catch(Exception e){
+            this.logger.error("删除患者的医生群发消息时发生异常"+e.getMessage());
+            jsonResult.setErrorcode("10001");
+            jsonResult.setMessage("there is an exception while  deleting doctor group message:"+e.getMessage());
+            jsonResult.setData(null);
+        }
+        return jsonResult;
+    }
+    /*
+     *设置患者的医生群发消息为已读
+      */
+    @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
+            RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
+            RequestMethod.HEAD, RequestMethod.PUT, RequestMethod.PATCH}, origins="*")
+    @RequestMapping(value="/groupreceiving/setread",method = RequestMethod.POST)
+    public JsonResult setPatientGroupReceivingRead(@RequestParam int id){
+        try{
+            String result = patientClient.setGroupReceivingRead(id);
+            if(result.equals("success")){
+                jsonResult.setErrorcode("0");
+                jsonResult.setMessage("set doctor group message read success");
+                jsonResult.setData(null);
+                this.logger.info("成功设置患者的医生群发消息为已读");
+            }else if(result.equals("error")){
+                jsonResult.setErrorcode("1");
+                jsonResult.setMessage("set doctor group message read error");
+                jsonResult.setData(null);
+                this.logger.info("设置患者的医生群发消息为已读失败,数据库异常");
+            }
+
+        }catch(Exception e){
+            this.logger.error("设置患者的医生群发消息为已读时发生异常"+e.getMessage());
+            jsonResult.setErrorcode("10001");
+            jsonResult.setMessage("there is an exception while  setting doctor group message read:"+e.getMessage());
+            jsonResult.setData(null);
+        }
+        return jsonResult;
+    }
+
+    /*
+    *获取患者的一个医生群发消息详细信息
      */
     @CrossOrigin(allowCredentials="true", allowedHeaders="*", methods={RequestMethod.GET,
             RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS,
             RequestMethod.HEAD, RequestMethod.PUT, RequestMethod.PATCH}, origins="*")
-    @RequestMapping(value="/messageboard/getreply",method = RequestMethod.POST)
-    public MessageReplyEntity getMessageReply(@RequestBody MessageReplyEntity messageReplyEntity){
-return null;
+    @RequestMapping(value="/groupreceiving/get",method = RequestMethod.GET)
+    public JsonResult getPatientGroupReceiving(@RequestParam int id){
+        try{
+            PatientGroupReceivingEntity patientGroupReceivingEntity = patientClient.getGroupReceiving(id);
+                jsonResult.setErrorcode("0");
+                jsonResult.setMessage("get doctor group message detail success");
+                jsonResult.setData(patientGroupReceivingEntity);
+                this.logger.info("成功获取患者的医生群发详细消息");
+
+
+        }catch(Exception e){
+            this.logger.error("获取患者的医生群发详细消息时发生异常"+e.getMessage());
+            jsonResult.setErrorcode("10001");
+            jsonResult.setMessage("there is an exception while  getting doctor group message detail:"+e.getMessage());
+            jsonResult.setData(null);
+        }
+        return jsonResult;
     }
 }

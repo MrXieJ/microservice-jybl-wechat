@@ -7,7 +7,8 @@ $(function() {
     var signature='';
     $(function() {
         $('header').on('click', '.top-left', function() {
-            window.history.back();
+            // window.location.href="healthService.html?wechat_id="+wechat_id+"&headimg="+headimg;
+            window.history.go(-1);
         });
     });
     getMyDoctorInfo();
@@ -41,7 +42,6 @@ $(function() {
                     if (data) {
                         if(data.head_pic!=null){
                             $('#portait').attr('src', data.head_pic);
-                            $('#share').attr('href', 'www.baidu.com');
                         }
                         setItem('phone',data.phone);
                         $('#personName').html(data.name);
@@ -51,7 +51,8 @@ $(function() {
                         $('#personAdept').html(data.adept);
                         $('#personExperience').html(data.experience);
                         $('#a_2evaluate').attr('href', encodeURI('evaluateDoc.html?phone=' + data.phone + '&name=' + encodeURI(data.name) + '&avatar=' + encodeURI(data.head_pic)));
-                        $('#share').attr('href', 'http://www.baidu.com');
+                        $('#share').attr('href',encodeURI( 'share.html?qrcode='+data.qrcode_pic+'&name='+data.name));
+
                     }
                 }
             },
