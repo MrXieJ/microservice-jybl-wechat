@@ -240,7 +240,12 @@ public class PatientInfoController {
                 jsonResult.setErrorcode("1");
                 jsonResult.setMessage("patient has watched doctor .");
                 jsonResult.setData(null);
-            }else{
+            }else if(result.equals("info")) {
+                jsonResult.setErrorcode("2");
+                jsonResult.setMessage("patient doesn't complete information .");
+                jsonResult.setData(null);
+            }
+            else{
                     jsonResult.setErrorcode("10012");
                     jsonResult.setMessage("there is an exception in mysql while buying service .");
                     jsonResult.setData(null);

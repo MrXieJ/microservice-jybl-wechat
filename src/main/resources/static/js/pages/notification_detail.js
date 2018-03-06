@@ -21,7 +21,7 @@ $(function() {
     // 获取消息详细内容
     function getnotificationDetail(id) {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/messageremind/getbyid',
+            url: 'http://www.jiayibilin.com/api-wechat/healthmanage/messageremind/getbyid',
             type: 'GET',
             timeout: 5000,
             data: {
@@ -51,7 +51,7 @@ $(function() {
     // 获取医生群发消息详细内容
     function getGroupDetail(id) {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/groupreceiving/get',
+            url: 'http://www.jiayibilin.com/api-wechat/patientinfo/groupreceiving/get',
             type: 'GET',
             timeout: 5000,
             data: {

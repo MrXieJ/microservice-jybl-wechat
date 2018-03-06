@@ -3,11 +3,11 @@ $(function() {
     var headimg = getUrlParam('headimg');
     $('#portait').attr('src', headimg);
     var isUpdate = false;
-    var saveUrl = 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/save';
-    var updateUrl = 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/update';
+    var saveUrl = 'http://www.jiayibilin.com/api-wechat/patientinfo/save';
+    var updateUrl = 'http://www.jiayibilin.com/api-wechat/patientinfo/update';
 
     $.ajax({
-        url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/get',
+        url: 'http://www.jiayibilin.com/api-wechat/patientinfo/get',
         type: 'GET',
         data: {
             wechat_id: wechat_id

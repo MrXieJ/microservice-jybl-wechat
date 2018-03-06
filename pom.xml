@@ -140,6 +140,33 @@
 					<fork>true</fork>
 				</configuration>
 			</plugin>
+			<!-- tag::plugin[] -->
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.13</version>
+				<configuration>
+					<dockerHost>http://120.79.6.37:2375</dockerHost>
+					<imageName>scutzx/eureka-weixin</imageName>
+					<baseImage>daocloud.io/library/java:latest</baseImage>
+					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+
+					<!--dockerHost: docker宿主机地址，其中端口号为docker远程API访问端口。-->
+					<!--imageName: 构建镜像的repository,该值勿包含英文大写字母。-->
+					<!--baseImage: 基础镜像。基于该镜像构建项目的运行环境。-->
+					<!--entryPoint: 同dockerfile中的命令，还可以写其他在dockerfile中运行的命令。-->
+					<!--resources: 项目的资源配置-->
+
+				</configuration>
+			</plugin>
+			<!-- end::plugin[] -->
 		</plugins>
 	</build>
 

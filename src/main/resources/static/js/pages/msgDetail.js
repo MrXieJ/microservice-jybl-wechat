@@ -21,7 +21,7 @@ $(function () {
     }
     //获取一个留言板及其回复
     $.ajax({
-        url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/messageboard/getone',
+        url: 'http://www.jiayibilin.com/api-wechat/patientinfo/messageboard/getone',
         type: 'GET',
         timeout: 5000,
         data: {

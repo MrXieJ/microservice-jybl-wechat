@@ -72,7 +72,7 @@ $(function() {
     function getUnreadNotifications() {
     // 获取未读消息
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/messageremind/getunread',
+            url: 'http://www.jiayibilin.com/api-wechat/healthmanage/messageremind/getunread',
             type: 'GET',
             timeout: 5000,
             data: {
@@ -105,7 +105,7 @@ $(function() {
     // 获取未读医生群发消息
     function getGroupReceivingList() {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/groupreceiving/list',
+            url: 'http://www.jiayibilin.com/api-wechat/patientinfo/groupreceiving/list',
             type: 'GET',
             timeout: 5000,
             data: {
@@ -164,7 +164,7 @@ $(function() {
     // 设置消息已读
     function setRead(id) {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/messageremind/setread',
+            url: 'http://www.jiayibilin.com/api-wechat/healthmanage/messageremind/setread',
             type: 'POST',
             timeout: 5000,
             data: {
@@ -186,7 +186,7 @@ $(function() {
     // 设置医生群发消息已读
     function setReadGroup(id) {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/groupreceiving/setread',
+            url: 'http://www.jiayibilin.com/api-wechat/patientinfo/groupreceiving/setread',
             type: 'POST',
             timeout: 5000,
             data: {
@@ -208,7 +208,7 @@ $(function() {
 // 删除医生群发消息
     function deleteGroupMessage(id) {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/groupreceiving/delete',
+            url: 'http://www.jiayibilin.com/api-wechat/patientinfo/groupreceiving/delete',
             type: 'POST',
             timeout: 5000,
             data: {

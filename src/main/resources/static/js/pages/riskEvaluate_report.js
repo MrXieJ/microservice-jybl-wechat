@@ -31,7 +31,7 @@ $(function() {
     // 获取指定的风险评估报告
     function getReport() {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/report/getbycount',
+            url: 'http://www.jiayibilin.com/api-wechat/healthmanage/report/getbycount',
             type: 'GET',
             timeout: 5000,
             data: {
@@ -64,7 +64,7 @@ $(function() {
     // 获取最新的风险评估报告
     function getNewestReport() {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/report/getnewest',
+            url: 'http://www.jiayibilin.com/api-wechat/healthmanage/report/getnewest',
             type: 'GET',
             timeout: 5000,
             data: {

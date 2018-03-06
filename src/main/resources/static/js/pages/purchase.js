@@ -1,4 +1,4 @@
-var URL = "http://mrxiej.ngrok.wendal.cn/api-wechat";
+var URL = "http://www.jiayibilin.com/api-wechat";
 
 //获取url中的参数
 function getUrlParam(name) {

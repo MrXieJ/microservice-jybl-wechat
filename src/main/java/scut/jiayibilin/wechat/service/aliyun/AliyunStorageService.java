@@ -15,12 +15,12 @@ public class AliyunStorageService {
         // endpoint以杭州为例，其它region请按实际情况填写
         String endpoint = "oss-cn-shenzhen.aliyuncs.com";
         // 云账号AccessKey有所有API访问权限，建议遵循阿里云安全最佳实践，创建并使用RAM子账号进行API访问或日常运维，请登录 https://ram.console.aliyun.com 创建
-        String accessKeyId = "LTAIkpyetsTzpyLk";
-        String accessKeySecret = "4sLEUI1yuiILsvpypNhbtAHKgCmkwI";
+        String accessKeyId = "LTAIbteonN24n3it";
+        String accessKeySecret = "RZY6bgLo44qZT5juDI2Xw0r0bjNovH";
         // 创建OSSClient实例
         OSSClient ossClient = new OSSClient(endpoint, accessKeyId,accessKeySecret);
 
-        ossClient.putObject("sunmen-oss", filename, new ByteArrayInputStream(content));
+        ossClient.putObject("jybl-photo", filename, new ByteArrayInputStream(content));
         // 关闭client
         ossClient.shutdown();}
         catch (Exception e){
@@ -35,12 +35,12 @@ public class AliyunStorageService {
         // endpoint以杭州为例，其它region请按实际情况填写
         String endpoint = "oss-cn-shenzhen.aliyuncs.com";
     // 云账号AccessKey有所有API访问权限，建议遵循阿里云安全最佳实践，创建并使用RAM子账号进行API访问或日常运维，请登录 https://ram.console.aliyun.com 创建
-        String accessKeyId = "LTAIkpyetsTzpyLk";
-        String accessKeySecret = "4sLEUI1yuiILsvpypNhbtAHKgCmkwI";
+        String accessKeyId = "LTAIbteonN24n3it";
+        String accessKeySecret = "RZY6bgLo44qZT5juDI2Xw0r0bjNovH";
     // 创建OSSClient实例
         OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret);
     // Object是否存在
-        boolean found = ossClient.doesObjectExist("sunmen-oss", filename);
+        boolean found = ossClient.doesObjectExist("jybl-photo", filename);
     // 关闭client
         ossClient.shutdown();
         return found;

@@ -9,11 +9,11 @@ public class WxUrlService {
     /*
     * 定义基本的url
     * */
-    String baseurl="http://mrxiej.ngrok.wendal.cn/api-wechat";
+    String baseurl="http://www.jiayibilin.com/api-wechat";
     /*
     * imagebaseurl,阿里云链接
     * */
-    String imagebaseurl="http://sunmen-oss.oss-cn-shenzhen.aliyuncs.com";
+    String imagebaseurl="http://jybl-photo.oss-cn-shenzhen.aliyuncs.com";
     /*
     * 医生二维码访问后台的链接
     * */

@@ -3,7 +3,6 @@ $(function() {
     var serviceIdList = getUrlParam('serviceIdList');
     var phone =getItem('phone');
 
-
     // 取消
     $('#cancel').on('click', function() {
         window.location.href = 'myDoctor.html';
@@ -14,7 +13,7 @@ $(function() {
         var checkProcotol = $('#checkProcotol').is(':checked');
         if (checkProcotol) {
             $.ajax({
-                url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/service/buy',
+                url: 'http://www.jiayibilin.com/api-wechat/patientinfo/service/buy',
                 type: 'POST',
                 timeout: 5000,
                 data: {
@@ -31,7 +30,12 @@ $(function() {
                        $.alert('您已经有自己的私人医生，无法购买其他医生的服务', '提示',function () {
                             window.location.href = 'orderService.html';
                        });
-                        }else{
+                        }else if(result.errorcode=='2'){
+                            $.alert('您还没有完善信息,请选择菜单栏个人服务完善个人信息后再购买服务', '提示',function () {
+                                window.location.href = "javascript:WeixinJSBridge.call('closeWindow')";
+                            });
+                        }
+                        else{
                         $.alert('购买失败，请稍候再试', '提示',function () {
                             window.location.href = 'orderService.html';
                         });
@@ -63,7 +67,7 @@ $(function() {
     // 获取服务订单
     function getServiceOrder() {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/service/getbylist',
+            url: 'http://www.jiayibilin.com/api-wechat/patientinfo/service/getbylist',
             type: 'GET',
             timeout: 5000,
             data: {

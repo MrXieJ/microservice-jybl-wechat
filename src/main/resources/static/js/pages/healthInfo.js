@@ -83,7 +83,7 @@ $(function() {
     // 获取健康档案数据
     function getHealthInfo() {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/healthcheck/get',
+            url: 'http://www.jiayibilin.com/api-wechat/healthmanage/healthcheck/get',
             type: 'GET',
             timeout: 5000,
             data: {
@@ -115,7 +115,7 @@ $(function() {
     // 保存健康档案数据
     function saveHealthInfo(info) {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/healthcheck/saveorupdate',
+            url: 'http://www.jiayibilin.com/api-wechat/healthmanage/healthcheck/saveorupdate',
             type: 'POST',
             timeout: 5000,
             data: {

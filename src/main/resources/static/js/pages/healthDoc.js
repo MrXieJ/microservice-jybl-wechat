@@ -12,7 +12,7 @@ $(function() {
     // 生成风险报告
     function generateReport() {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/report/generate',
+            url: 'http://www.jiayibilin.com/api-wechat/healthmanage/report/generate',
             type: 'POST',
             timeout: 5000,
             data: {

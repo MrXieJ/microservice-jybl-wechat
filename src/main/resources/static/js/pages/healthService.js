@@ -16,7 +16,7 @@ $(function() {
     // getMessageBoard();
     //判断是否填写个人信息
     $.ajax({
-        url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/get',
+        url: 'http://www.jiayibilin.com/api-wechat/patientinfo/get',
         type: 'GET',
         timeout: 30000,
         data: {
@@ -84,7 +84,7 @@ function getUnreadMessage() {
     var num=0;
     //获取未读医生群发消息数量
     $.ajax({
-        url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/groupreceiving/unread',
+        url: 'http://www.jiayibilin.com/api-wechat/patientinfo/groupreceiving/unread',
         type: 'GET',
         timeout: 5000,
         data: {
@@ -100,7 +100,7 @@ function getUnreadMessage() {
             }
             //获取未读消息数量
             $.ajax({
-                url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/messageremind/unread/getnumber',
+                url: 'http://www.jiayibilin.com/api-wechat/healthmanage/messageremind/unread/getnumber',
                 type: 'GET',
                 timeout: 5000,
                 data: {
@@ -145,7 +145,7 @@ function getUnreadMessage() {
 
     //获取医生回复
     $.ajax({
-        url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/messageremind/unread/getnumber',
+        url: 'http://www.jiayibilin.com/api-wechat/healthmanage/messageremind/unread/getnumber',
         type: 'GET',
         timeout: 5000,
         data: {
@@ -175,7 +175,7 @@ function getUnreadMessage() {
     //获取最新留言板和回复
     function getMessageBoard() {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/messageboard/getnewestmessagwe',
+            url: 'http://www.jiayibilin.com/api-wechat/patientinfo/messageboard/getnewestmessagwe',
             type: 'GET',
             timeout: 5000,
             data: {
@@ -210,7 +210,7 @@ function getUnreadMessage() {
         });
     }
     $.ajax({
-        url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/messageboard/getnewestmessagwe',
+        url: 'http://www.jiayibilin.com/api-wechat/patientinfo/messageboard/getnewestmessagwe',
         type: 'GET',
         timeout: 5000,
         data: {

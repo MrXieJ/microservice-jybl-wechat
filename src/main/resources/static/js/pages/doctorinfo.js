@@ -11,7 +11,6 @@ $(function() {
     var wechat_id = getUrlParam('wechat_id');
     setItem('wechat_id', wechat_id);
     setItem('phone', phone);
-    $.alert('想拥有您自己的私人医生需要购买医生提供的服务','提示');
     $(function() {
         $('header').on('click', '.top-left', function() {
             window.history.back();
@@ -22,7 +21,7 @@ $(function() {
     // 获取医生信息
     function getDoctorInfo() {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/doctor/get',
+            url: 'http://www.jiayibilin.com/api-wechat/doctor/get',
             type: 'GET',
             timeout: 5000,
             data: {
@@ -40,8 +39,8 @@ $(function() {
                                 javascript:WeixinJSBridge.call('closeWindow');
                             }
                         });
-
                 } else {
+                    $.alert('想拥有您自己的私人医生需要购买医生提供的服务','提示');
                     var data = result.data;
                     if (data) {
                         if(data.head_pic!=null){
@@ -61,16 +60,6 @@ $(function() {
                 javascript:WeixinJSBridge.call('closeWindow');
             },
             complete: function(xhr, status) {
-                var result = getDoctor();
-                var data = result.data;
-                if (data) {
-                    $('#personName').html(data.name);
-                    $('#personDepartment').html(data.department);
-                    $('#personPost').html(data.title);
-                    $('#personHospital').html(data.hospital);
-                    $('#personAdept').html(data.adept);
-                    $('#personExperience').html(data.experience);
-                }
                 $.hideLoading();
             }
         });
@@ -79,7 +68,7 @@ $(function() {
     // 加载服务包信息
     function getAllServices() {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/doctor/service/get',
+            url: 'http://www.jiayibilin.com/api-wechat/doctor/service/get',
             type: 'GET',
             timeout: 5000,
             beforeSend: function() {
@@ -117,7 +106,7 @@ $(function() {
     // 获取已购买的服务包
     function getBoughtServices() {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/service/get',
+            url: 'http://www.jiayibilin.com/api-wechat/patientinfo/service/get',
             type: 'GET',
             timeout: 5000,
             data: {
@@ -180,6 +169,7 @@ $(function() {
         var $checked = $parent.find('input:enabled:checked');
         var num = $checked.length;
         if (num) {
+
             var serviceIdList = [];
             $checked.each(function(index) {
                 var $data = $(this).closest('.weui-media-box__bd');

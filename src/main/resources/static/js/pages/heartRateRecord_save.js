@@ -93,7 +93,7 @@ $(function() {
     // 保存血压心率数据
     function saveheartrateRecord(info) {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/bloodcheck/saveorupdate',
+            url: 'http://www.jiayibilin.com/api-wechat/healthmanage/bloodcheck/saveorupdate',
             type: 'POST',
             timeout: 5000,
             data: {

@@ -20,7 +20,7 @@ var phone=getItem("phone");
 //获取患者信息
 function getPatientInfo() {
     $.ajax({
-        url:'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/get',
+        url:'http://www.jiayibilin.com/api-wechat/patientinfo/get',
         type: 'GET',
         timeout: 5000,
         data: {
@@ -79,7 +79,7 @@ $('.submit-btn').on('click', function(){
 
         var storeAs = 'messageboard/' + new Date().getTime() + ext;
 
-        OSS.urllib.request("http://125.216.243.114:2004/requestSTS",
+        OSS.urllib.request("http://www.jiayibilin.com/api-stsserver/requestSTS",
             {method: 'GET'},
             function (err, response) {
                 if (err) {
@@ -129,7 +129,7 @@ $('.submit-btn').on('click', function(){
             }
 
             $.ajax({
-                url:'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/messageboard/set',
+                url:'http://www.jiayibilin.com/api-wechat/patientinfo/messageboard/set',
                 type: 'POST',
                 timeout: 5000,
                 contentType: 'application/json;charset=utf-8',
@@ -177,7 +177,7 @@ function saveMessageBoard(picture, client, storeAs) {
     }
 
     $.ajax({
-        url:'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/messageboard/set',
+        url:'http://www.jiayibilin.com/api-wechat/patientinfo/messageboard/set',
         type: 'POST',
         timeout: 5000,
         contentType: 'application/json;charset=utf-8',

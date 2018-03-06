@@ -4,7 +4,7 @@ $(function() {
     // 获取心率记录
     function getHeartRateRecord() {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/bloodcheck/get',
+            url: 'http://www.jiayibilin.com/api-wechat/healthmanage/bloodcheck/get',
             type: 'GET',
             timeout: 5000,
             data: {

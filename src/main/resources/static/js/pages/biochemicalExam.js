@@ -26,7 +26,7 @@ $(function() {
     // 保存数据
     function saveBioExam(exam) {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/biologycheck/saveorupdate',
+            url: 'http://www.jiayibilin.com/api-wechat/healthmanage/biologycheck/saveorupdate',
             type: 'POST',
             timeout: 5000,
             data: {

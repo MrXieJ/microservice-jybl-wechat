@@ -22,7 +22,7 @@ public class MainViewController {
     /*
     * 基本URL
     * */
-    private String baseUrl = "http://mrxiej.ngrok.wendal.cn/api-wechat";
+    private String baseUrl = "http://www.jiayibilin.com/api-wechat";
     /*
     * 获取一些必要的微信参数类
     * */

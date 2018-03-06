@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by jie on 2017/8/30.
  */
-@FeignClient(name="eureka-server-mysql",url="http://mrxiej.ngrok.wendal.cn/api-mysql")
+@FeignClient(name="eureka-server-mysql",url="http://www.jiayibilin.com/api-mysql")
 public interface HealthManageClient {
     /*
     * 调用远程服务下的保存健康信息表接口

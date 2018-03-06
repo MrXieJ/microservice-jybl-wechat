@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/wechat/menu")
 public class WxMenuController implements WxMpMenuService {
 
-    private String baseUrl="http://mrxiej.ngrok.wendal.cn/api-wechat";
+    private String baseUrl="http://www.jiayibilin.com/api-wechat";
 
     @Autowired
     private WxMpService wxService;

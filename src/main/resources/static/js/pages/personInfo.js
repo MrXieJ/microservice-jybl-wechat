@@ -6,7 +6,7 @@ $(function() {
     }
 
     $.ajax({
-        url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/get',
+        url: 'http://www.jiayibilin.com/api-wechat/patientinfo/get',
         type: 'GET',
         timeout: 30000,
         data: {

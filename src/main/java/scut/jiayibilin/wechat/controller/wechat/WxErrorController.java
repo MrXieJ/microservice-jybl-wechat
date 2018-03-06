@@ -22,7 +22,7 @@ public class WxErrorController implements ErrorController {
     /*
     * 基本URL
     * */
-    private String baseurl="http://mrxiej.ngrok.wendal.cn/api-wechat";
+    private String baseurl="http://www.jiayibilin.com/api-wechat";
     private static final Logger logger = LoggerFactory
             .getLogger(WxErrorController.class);
     private final static String ERROR_PATH = "/error";

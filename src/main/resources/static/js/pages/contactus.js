@@ -35,7 +35,7 @@ $(function() {
      */
     function suggestsub(suggest, calback) {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/contact/suggest',
+            url: 'http://www.jiayibilin.com/api-wechat/patientinfo/contact/suggest',
             type: 'POST',
             contentType: 'application/json;charset=utf-8',
             data: JSON.stringify(suggest),

@@ -24,7 +24,7 @@ public class DoctorViewController {
     /*
     * 基本URL
     * */
-    private String baseUrl = "http://mrxiej.ngrok.wendal.cn/api-wechat";
+    private String baseUrl = "http://www.jiayibilin.com/api-wechat";
 
     @Autowired
     private MyWxMpService myWxMpService;

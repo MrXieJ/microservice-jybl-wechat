@@ -12,7 +12,7 @@ $(function() {
     // 获取评估人数
     function getEvaluateNumber() {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/report/getnumber',
+            url: 'http://www.jiayibilin.com/api-wechat/healthmanage/report/getnumber',
             type: 'GET',
             timeout: 5000,
             beforeSend: function() {
@@ -42,7 +42,7 @@ $(function() {
     // 获取所有评估报告
     function getAllReports() {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/report/getall',
+            url: 'http://www.jiayibilin.com/api-wechat/healthmanage/report/getall',
             type: 'GET',
             timeout: 5000,
             data: {

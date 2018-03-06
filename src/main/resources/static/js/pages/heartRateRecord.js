@@ -14,7 +14,7 @@ $(function() {
     // 查找患者是否有心率记录
     function findHeartRateRecord() {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/bloodcheck/find',
+            url: 'http://www.jiayibilin.com/api-wechat/healthmanage/bloodcheck/find',
             type: 'GET',
             timeout: 5000,
             data: {
@@ -87,7 +87,7 @@ $(function() {
     // 获取心率记录
     function getHeartRateRecord(timearea, time) {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/healthmanage/bloodcheck/get',
+            url: 'http://www.jiayibilin.com/api-wechat/healthmanage/bloodcheck/get',
             type: 'GET',
             timeout: 5000,
             data: {

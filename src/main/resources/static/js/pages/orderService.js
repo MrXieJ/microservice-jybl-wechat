@@ -29,7 +29,7 @@ $(function() {
     // 获取已购买的服务包
     function getBoughtServices() {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/service/get',
+            url: 'http://www.jiayibilin.com/api-wechat/patientinfo/service/get',
             type: 'GET',
             timeout: 5000,
             data: {
@@ -113,7 +113,7 @@ $(function() {
     //重复购买服务
     function buyServiceagain(serviceId) {
         $.ajax({
-            url: 'http://mrxiej.ngrok.wendal.cn/api-wechat/patientinfo/service/buyagain',
+            url: 'http://www.jiayibilin.com/api-wechat/patientinfo/service/buyagain',
             type: 'POST',
             timeout: 5000,
             data: {

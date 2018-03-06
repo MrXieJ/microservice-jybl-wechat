@@ -3,6 +3,7 @@ package scut.jiayibilin.wechat.controller.feign.mysql.qrcode;
 import com.github.binarywang.utils.qrcode.QrcodeUtils;
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.common.exception.WxErrorException;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,10 @@ public class AliyunOssController {
         try{
             String url = myWxMpService.oauth2buildAuthorizationUrl(wxUrlService.getDoctorQrcodeurl()+"/"+phone, WxConsts.OAUTH2_SCOPE_USER_INFO, "qrcode");
             /*项目中获取Logo文件*/
-            File logo = ResourceUtils.getFile("classpath:static/image/logo.png");
+            InputStream stream = getClass().getClassLoader().getResourceAsStream("static/image/logo.png");
+            File logo = new File("logo.png");
+            FileUtils.copyInputStreamToFile(stream, logo);
+            //File logo = ResourceUtils.getFile("classpath:static/image/logo.png");
             /*二维码文件存放的本地路径*/
             byte[] code = QrcodeUtils.createQrcode(url, logo);
             /*七牛云上传本地文件*/
